@@ -85,7 +85,7 @@ export function ProfileAvatar({ size = 'lg', className = '' }: ProfileAvatarProp
           <motion.img
             src={developer.profileImage}
             alt={`${developer.name} — developer portrait`}
-            className="profile-photo block h-full w-full object-cover"
+            className="profile-photo block h-full w-full object-contain bg-black"
             width={400}
             height={400}
             decoding="async"

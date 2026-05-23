@@ -13,7 +13,6 @@
     vchatFeatures,
     vchatArchitecture,
     vchatManagers,
-    APK_DOWNLOAD_URL,
   } from '../data/content'
   import { SectionHeader } from './SectionHeader'
   import { TechBadge } from './ui/TechBadge'

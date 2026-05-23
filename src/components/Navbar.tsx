@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Download, ArrowUpRight } from 'lucide-react'
-import { developer, navLinks, APK_DOWNLOAD_URL } from '../data/content'
+import { developer, navLinks } from '../data/content'
 import { SocialButtons } from './ui/SocialButtons'
 
 export function Navbar() {

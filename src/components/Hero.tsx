@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Download, Code2 } from 'lucide-react'
-import { developer, APK_DOWNLOAD_URL } from '../data/content'
+import { developer } from '../data/content'
 import { SocialButtons } from './ui/SocialButtons'
 import { ProfileAvatar } from './ui/ProfileAvatar'
 import { Scene3D } from './Scene3D'
@@ -33,7 +33,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.25, duration: 0.6 }}
-              className="font-display text-5xl font-black leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl"
+              className="text-4xl font-black leading-none sm:text-5xl md:text-6xl lg:text-7xl"
             >
               <span className="block text-white">{developer.shortName}</span>
               <span className="text-gradient block mt-2">Chudasama</span>

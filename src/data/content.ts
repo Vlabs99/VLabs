@@ -31,8 +31,8 @@ export type SocialPlatform = 'github' | 'linkedin' | 'email' | 'instagram'
 
 export const developer = {
   name: 'Vishwarajsinh Chudasama',
-  shortName: 'Pratik', // Updated shortName
-  fullName: 'Pratik Chudasama', // Added fullName
+  shortName: 'Vishwarajsinh', // Updated shortName
+  fullName: 'Vishwarajsinh Chudasama', // Added fullName
   initials: 'VC',
   brand: 'VLabs',
   brandTagline: 'Advanced Android · AI · Realtime Systems',
@@ -368,3 +368,40 @@ export const socialLinks: {
   },
 ]
 
+export const vchatGallery = [
+  {
+    title: 'Splash Screen',
+    description: 'Modern VChat startup screen with branding and loading experience.',
+    image: '/VLabs/screenshots/vchat-splash.jpeg',
+  },
+  {
+    title: 'Chat Sessions',
+    description: 'Realtime conversation list with active chats and recent messages.',
+    image: '/VLabs/screenshots/vchat-chat-list.jpeg',
+  },
+  {
+    title: 'Private Chat',
+    description: 'Direct realtime messaging with reply and typing support.',
+    image: '/VLabs/screenshots/vchat-private-chat.jpeg',
+  },
+  {
+    title: 'Group Settings',
+    description: 'Manage group members, permissions, and chat customization.',
+    image: '/VLabs/screenshots/vchat-group-setting.jpeg',
+  },
+  {
+    title: 'Group Chat',
+    description: 'Realtime multi-user group communication powered by Firestore.',
+    image: '/VLabs/screenshots/vchat-group-chat.jpeg',
+  },
+  {
+    title: 'User Profile',
+    description: 'Personal profile system with user information and customization.',
+    image: '/VLabs/screenshots/vchat-profile.jpeg',
+  },
+  {
+    title: 'User Search',
+    description: 'Search users with email and connect instantly.',
+    image: '/VLabs/screenshots/vchat-user-search.jpeg',
+  },
+]

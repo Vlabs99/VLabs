@@ -1,20 +1,13 @@
-import { motion } from 'framer-motion'
-import { Image, Play, Maximize2 } from 'lucide-react'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Maximize2, X } from 'lucide-react'
 import { useScrollReveal } from '../hooks/useScrollReveal'
-import { developer } from '../data/content'
+import { developer, vchatGallery } from '../data/content'
 import { SectionHeader } from './SectionHeader'
-
-const placeholders = [
-  { type: 'screenshot', label: 'Chat List & Friends', aspect: 'aspect-[9/16]' },
-  { type: 'screenshot', label: '1:1 Conversation', aspect: 'aspect-[9/16]' },
-  { type: 'screenshot', label: 'Group Chat', aspect: 'aspect-[9/16]' },
-  { type: 'screenshot', label: 'Reply & Forward UI', aspect: 'aspect-[9/16]' },
-  { type: 'video', label: 'VChat Demo Walkthrough', aspect: 'aspect-video' },
-  { type: 'screenshot', label: 'Auth & Profile', aspect: 'aspect-[9/16]' },
-]
 
 export function Gallery() {
   const ref = useScrollReveal<HTMLElement>()
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   return (
     <section id="gallery" ref={ref} className="section-padding relative">
@@ -22,49 +15,40 @@ export function Gallery() {
         <SectionHeader
           label="Gallery"
           title="VChat in Action"
-          subtitle={`Screenshots and demo media from ${developer.name}'s realtime messenger — replace placeholders with your actual app captures.`}
+          subtitle={`Real screenshots from ${developer.brand} showcasing realtime messaging, groups, profiles, and Firebase-powered communication.`}
           align="center"
         />
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-          {placeholders.map((item, i) => (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {vchatGallery.map((item, i) => (
             <motion.div
-              key={item.label}
-              className={`animate-in-view glow-border group relative overflow-hidden rounded-2xl ${
-                item.type === 'video' ? 'sm:col-span-2 lg:col-span-2' : ''
-              }`}
+              key={item.title}
+              className="animate-in-view glow-border group relative overflow-hidden rounded-2xl"
               style={{ transitionDelay: `${i * 80}ms` }}
               whileHover={{ y: -6 }}
             >
-              <div
-                className={`glass-card flex ${item.aspect} w-full items-center justify-center bg-gradient-to-br from-surface/90 to-abyss`}
-              >
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,240,255,0.07),transparent_65%)]" />
+              <div className="glass-card relative overflow-hidden bg-black p-3">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="mx-auto max-h-[700px] w-auto rounded-xl object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+                />
 
-                {item.type === 'video' ? (
-                  <div className="relative z-10 flex flex-col items-center gap-4 p-8">
-                    <div className="flex h-20 w-20 items-center justify-center rounded-full border border-neon-cyan/30 bg-neon-cyan/10 transition-transform duration-300 group-hover:scale-110 group-hover:shadow-glow">
-                      <Play className="h-10 w-10 fill-neon-cyan text-neon-cyan" />
-                    </div>
-                    <span className="font-mono text-xs text-white/35">
-                      Add demo.mp4 to /public/videos/
-                    </span>
+                <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-between bg-gradient-to-t from-black/90 via-black/50 to-transparent p-4 pt-16">
+                  <div>
+                    <h3 className="text-sm font-semibold text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-white/60">
+                      {item.description}
+                    </p>
                   </div>
-                ) : (
-                  <div className="relative z-10 flex flex-col items-center gap-3 p-6">
-                    <Image className="h-11 w-11 text-white/15" />
-                    <span className="text-center text-xs text-white/30">
-                      /public/screenshots/
-                    </span>
-                  </div>
-                )}
 
-                <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-between bg-gradient-to-t from-void via-void/80 to-transparent p-4 pt-12 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <span className="text-sm font-medium text-white/80">{item.label}</span>
                   <button
                     type="button"
-                    className="rounded-lg border border-white/10 p-2 text-white/50 hover:text-neon-cyan"
-                    aria-label={`Expand ${item.label}`}
+                    onClick={() => setSelectedImage(item.image)}
+                    className="rounded-lg border border-white/10 bg-black/40 p-2 text-white/70 backdrop-blur transition hover:text-neon-cyan"
+                    aria-label={`Expand ${item.title}`}
                   >
                     <Maximize2 className="h-4 w-4" />
                   </button>
@@ -73,13 +57,37 @@ export function Gallery() {
             </motion.div>
           ))}
         </div>
-
-        <p className="animate-in-view mt-10 text-center font-mono text-[11px] text-white/30">
-          Drop assets into{' '}
-          <span className="text-neon-cyan">public/screenshots/</span> and{' '}
-          <span className="text-neon-cyan">public/videos/</span>
-        </p>
       </div>
+
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center overflow-auto bg-black/90 p-4 backdrop-blur"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedImage(null)}
+              className="absolute right-5 top-5 z-[110] rounded-full border border-white/10 bg-black/40 p-3 text-white transition hover:text-neon-cyan"
+            >
+              <X className="h-6 w-6" />
+            </button>
+
+            <motion.img
+              src={selectedImage}
+              alt="Expanded screenshot"
+              className="max-h-[95vh] max-w-full rounded-2xl object-contain"
+              initial={{ scale: 0.92 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.92 }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
