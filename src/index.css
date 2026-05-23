@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void font-sans text-white antialiased;
+    overflow-x: hidden;
+    letter-spacing: 0.01em;
+  }
+
+  h1, h2, h3, h4 {
+    @apply tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-neon-cyan/30 text-white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-abyss;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-neon-cyan/30;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-neon-cyan/50;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl;
+  }
+
+  .glass-card {
+    @apply glass-panel shadow-card transition-all duration-500 ease-out;
+  }
+
+  .glass-card:hover {
+    @apply -translate-y-0.5 border-neon-cyan/20 bg-white/[0.05] shadow-glow;
+  }
+
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 240, 255, 0.5),
+      rgba(139, 92, 246, 0.3),
+      rgba(217, 70, 239, 0.2),
+      rgba(0, 240, 255, 0.5)
+    );
+    background-size: 300% 300%;
+    animation: shimmer 6s linear infinite;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+  }
+
+  .glow-border:hover::before {
+    opacity: 1;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-neon-cyan via-neon-violet to-neon-magenta bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    background: linear-gradient(135deg, #00f0ff 0%, #8b5cf6 50%, #d946ef 100%);
+    background-size: 200% 200%;
+    animation: shimmer 4s ease infinite;
+  }
+
+  .btn-primary:hover {
+    @apply scale-[1.02] shadow-glow-lg;
+    filter: brightness(1.1);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-medium backdrop-blur-md transition-all duration-300;
+  }
+
+  .btn-secondary:hover {
+    @apply -translate-y-0.5 border-neon-cyan/30 bg-white/10 shadow-glow;
+  }
+
+  .nav-link {
+    @apply relative rounded-lg px-3.5 py-2 text-sm text-white/55 transition-all duration-300;
+  }
+
+  .nav-link:hover {
+    @apply bg-white/[0.04] text-neon-cyan;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-1 left-1/2 h-px w-0 -translate-x-1/2 bg-neon-cyan transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-[60%];
+  }
+
+  .nav-cta {
+    @apply items-center gap-1.5 rounded-xl border border-neon-cyan/20 bg-neon-cyan/5 px-4 py-2 text-sm font-medium text-neon-cyan transition-all duration-300;
+  }
+
+  .nav-cta:hover {
+    @apply -translate-y-0.5 border-neon-cyan/40 bg-neon-cyan/10 shadow-glow;
+  }
+
+  .nav-footer-link {
+    @apply text-white/40 transition-all duration-300 hover:text-neon-cyan hover:translate-x-0.5;
+  }
+
+  .social-icon-btn {
+    @apply flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-white/60 backdrop-blur-md transition-all duration-300;
+  }
+
+  .social-card {
+    @apply flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 backdrop-blur-xl transition-all duration-300;
+  }
+
+  .social-card:hover {
+    @apply border-white/15 bg-white/[0.06];
+  }
+
+  .label-field {
+    @apply mb-2 block font-mono text-[11px] uppercase tracking-wider text-white/40;
+  }
+
+  .profile-avatar-wrap {
+    @apply shrink-0;
+  }
+
+  .profile-glass-frame {
+    @apply rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      0 0 40px rgba(0, 240, 255, 0.12),
+      0 20px 50px rgba(0, 0, 0, 0.5);
+  }
+
+  .profile-glow-ring {
+    background: conic-gradient(
+      from 0deg,
+      rgba(0, 240, 255, 0.7),
+      rgba(139, 92, 246, 0.5),
+      rgba(217, 70, 239, 0.4),
+      rgba(0, 240, 255, 0.2),
+      rgba(0, 240, 255, 0.7)
+    );
+    opacity: 0.85;
+    filter: blur(0.5px);
+  }
+
+  .profile-glow-pulse {
+    box-shadow: 0 0 60px rgba(0, 240, 255, 0.25), 0 0 100px rgba(139, 92, 246, 0.15);
+  }
+
+  .profile-image-ring {
+    @apply bg-abyss;
+    box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .profile-photo {
+    object-fit: cover;
+    object-position: center 22%;
+  }
+
+  @media (min-width: 640px) {
+    .profile-photo {
+      object-position: center 20%;
+    }
+  }
+
+  .section-padding {
+    @apply px-4 py-28 sm:px-6 lg:px-8 lg:py-36;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-bold leading-[1.1] sm:text-4xl lg:text-[2.75rem];
+  }
+
+  .section-subtitle {
+    @apply mt-5 max-w-2xl text-base leading-relaxed text-white/50 sm:text-lg;
+  }
+
+  .input-field {
+    @apply w-full rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 text-white placeholder-white/25 outline-none transition-all duration-300;
+  }
+
+  .input-field:focus {
+    @apply border-neon-cyan/40 bg-white/[0.06] ring-1 ring-neon-cyan/15;
+  }
+
+  .mesh-bg {
+    background-image:
+      radial-gradient(at 40% 20%, rgba(0, 240, 255, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(217, 70, 239, 0.06) 0px, transparent 50%);
+  }
+
+  .grid-pattern {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .perspective-3d {
+    perspective: 1200px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+@layer utilities {
+  .animate-in-view {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .animate-in-view.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
