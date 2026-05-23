@@ -84,7 +84,8 @@ export const navLinks = [
 ]
 
 // APK Download URL
-export const APK_DOWNLOAD_URL = '#' // Update with actual APK download link
+export const APK_DOWNLOAD_URL =
+  'https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk' // Update with actual APK download link
 
 // heroStats has been removed as it's no longer used in the simplified hero section.
 
