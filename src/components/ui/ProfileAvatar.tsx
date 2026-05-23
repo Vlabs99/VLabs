@@ -1,23 +1,28 @@
 import { motion } from 'framer-motion'
 import { developer } from '../../data/content'
 
-type ProfileSize = 'hero' | 'about' | 'compact'
+type ProfileSize = 'lg' | 'md' | 'compact' | 'about'
 
 const sizeMap: Record<ProfileSize, { outer: string; ring: string; img: string }> = {
-  hero: {
-    outer: 'h-[228px] w-[228px] sm:h-[272px] sm:w-[272px]',
-    ring: 'inset-[-7px] sm:inset-[-9px]',
-    img: 'inset-[6px] sm:inset-[7px]',
+  lg: {
+    outer: 'h-80 w-80',
+    ring: 'inset-[-6px]',
+    img: 'inset-[5px]',
+  },
+  md: {
+    outer: 'h-64 w-64',
+    ring: 'inset-[-5px]',
+    img: 'inset-[4px]',
   },
   about: {
-    outer: 'h-[208px] w-[208px] sm:h-[248px] sm:w-[248px]',
-    ring: 'inset-[-7px]',
-    img: 'inset-[6px]',
+    outer: 'h-72 w-72',
+    ring: 'inset-[-6px]',
+    img: 'inset-[5px]',
   },
   compact: {
-    outer: 'h-[88px] w-[88px]',
-    ring: 'inset-[-4px]',
-    img: 'inset-[3px]',
+    outer: 'h-24 w-24 sm:h-28 sm:w-28',
+    ring: 'inset-[-3px]',
+    img: 'inset-[2px]',
   },
 }
 
@@ -26,72 +31,68 @@ interface ProfileAvatarProps {
   className?: string
 }
 
-export function ProfileAvatar({ size = 'hero', className = '' }: ProfileAvatarProps) {
+export function ProfileAvatar({ size = 'lg', className = '' }: ProfileAvatarProps) {
   const dims = sizeMap[size]
 
   return (
     <motion.div
-      className={`relative flex flex-col items-center ${className}`}
-      whileHover="hover"
-      initial="rest"
+      className={`relative flex items-center justify-center ${className}`}
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7, delay: 0.3 }}
     >
       <motion.div
         className={`profile-avatar-wrap group relative ${dims.outer}`}
-        variants={{
-          rest: { scale: 1 },
-          hover: { scale: 1.03 },
-        }}
-        transition={{ type: 'spring', stiffness: 320, damping: 22 }}
+        whileHover={{ scale: 1.02 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
       >
-        {/* Rotating glow ring */}
+        {/* Subtle rotating gradient ring */}
         <motion.div
-          className={`profile-glow-ring absolute rounded-full ${dims.ring}`}
+          className={`profile-glow-ring absolute rounded-full border border-gradient-to-r from-neon-cyan/40 via-neon-violet/20 to-neon-cyan/40 ${dims.ring}`}
           animate={{ rotate: 360 }}
-          transition={{ duration: 14, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           aria-hidden
         />
 
-        {/* Hover-intensified outer glow */}
+        {/* Minimal glow effect */}
         <motion.div
           className="profile-glow-pulse absolute inset-0 rounded-full"
-          variants={{
-            rest: { opacity: 0.4, scale: 1 },
-            hover: { opacity: 0.85, scale: 1.06 },
+          animate={{
+            opacity: [0.3, 0.5, 0.3],
+            boxShadow: [
+              'inset 0 0 40px rgba(0, 240, 255, 0.1)',
+              'inset 0 0 60px rgba(0, 240, 255, 0.15)',
+              'inset 0 0 40px rgba(0, 240, 255, 0.1)',
+            ],
           }}
-          animate={{ opacity: [0.35, 0.65, 0.35], scale: [1, 1.03, 1] }}
           transition={{
-            opacity: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
-            scale: { duration: 4, repeat: Infinity, ease: 'easeInOut' },
+            duration: 5,
+            repeat: Infinity,
+            ease: 'easeInOut',
           }}
           aria-hidden
         />
 
-        <motion.div
-          className="profile-glass-frame absolute inset-0 rounded-full"
-          variants={{
-            rest: { boxShadow: '0 0 40px rgba(0, 240, 255, 0.12)' },
-            hover: { boxShadow: '0 0 56px rgba(0, 240, 255, 0.28), 0 0 80px rgba(139, 92, 246, 0.15)' },
-          }}
-        />
+        {/* Outer glow shadow */}
+        <div className="profile-glass-frame absolute inset-0 rounded-full shadow-lg" style={{
+          boxShadow: '0 0 50px rgba(0, 240, 255, 0.15), 0 0 100px rgba(139, 92, 246, 0.08)',
+        }} />
 
-        {/* Photo — centered on upper face region to avoid harsh crops */}
+        {/* Photo container */}
         <div
-          className={`profile-image-ring absolute overflow-hidden rounded-full ${dims.img}`}
+          className={`profile-image-ring absolute overflow-hidden rounded-full border border-white/10 ${dims.img}`}
         >
           <motion.img
             src={developer.profileImage}
             alt={`${developer.name} — developer portrait`}
-            className="profile-photo block h-full w-full min-h-full min-w-full"
+            className="profile-photo block h-full w-full object-cover"
             width={400}
             height={400}
             decoding="async"
             loading="eager"
             draggable={false}
-            variants={{
-              rest: { scale: 1 },
-              hover: { scale: 1.04 },
-            }}
-            transition={{ type: 'spring', stiffness: 280, damping: 24 }}
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
             onError={(e) => {
               const img = e.currentTarget
               const fallback = developer.profileImageFallback
@@ -100,14 +101,11 @@ export function ProfileAvatar({ size = 'hero', className = '' }: ProfileAvatarPr
               }
             }}
           />
-          <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-t from-void/50 via-void/5 to-neon-cyan/[0.06]" />
-          <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/10" />
+          {/* Subtle gradient overlay */}
+          <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-b from-transparent via-transparent to-void/30" />
         </div>
-
-        <span className="absolute bottom-2 right-2 z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 border-void bg-void sm:bottom-3 sm:right-3 sm:h-5 sm:w-5">
-          <span className="h-2 w-2 animate-pulse rounded-full bg-neon-cyan sm:h-2.5 sm:w-2.5" />
-        </span>
       </motion.div>
     </motion.div>
   )
 }
+

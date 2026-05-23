@@ -1,6 +1,10 @@
 # VLabs — Developer Portfolio
 
-React + Vite portfolio for **Vishwarajsinh Chudasama** (VLabs).
+React + Vite portfolio for **Vishwarajsinh Chudasama**.
+
+**Live site:** https://Vlabs99.github.io/VLabs/
+
+---
 
 ## Local development
 
@@ -9,44 +13,68 @@ npm install
 npm run dev
 ```
 
-Open **http://localhost:5173/VLabs/** (base path matches GitHub Pages).
+Open **http://localhost:5173/VLabs/** (same base path as GitHub Pages).
 
-## Production build
+## Test production build locally
 
 ```bash
 npm run build
-npm run preview:gh-pages
+npm run preview
 ```
 
-Preview at **http://localhost:4173/VLabs/**
+Open **http://localhost:4173/VLabs/**
 
-## GitHub Pages deployment
+---
 
-This project is configured for a **project site** at:
+## Deploy to GitHub Pages (simple static hosting)
 
-`https://<username>.github.io/VLabs/`
+### Prerequisites
 
-### Setup (one time)
+- GitHub repo named **`VLabs`** (must match the Vite `base` path)
+- Git installed and repo connected to GitHub
 
-1. Push this repo to GitHub as **`VLabs`** (repo name must match the base path).
-2. Go to **Settings → Pages → Build and deployment**.
-3. Set **Source** to **GitHub Actions**.
-4. Push to `main` (or run the workflow manually).
+### One-time GitHub settings
 
-The workflow in `.github/workflows/deploy.yml` builds `dist/` and deploys automatically.
+1. Open your repo on GitHub → **Settings** → **Pages**
+2. Under **Build and deployment** → **Source**, choose **Deploy from a branch**
+3. **Branch:** `gh-pages` → folder **`/ (root)`** → **Save**
+4. Do **not** use GitHub Actions for Pages (workflow removed)
 
-### Why the blank screen happened
+### Deploy (every update)
 
-GitHub Pages serves the app from `/VLabs/`, not `/`. Assets must use that base path. This repo sets:
+From the project folder:
 
-- `vite.config.ts` → `base: '/VLabs/'`
-- `src/lib/assets.ts` → `assetUrl()` for public files (profile photo, APK, etc.)
-- `index.html` → `%BASE_URL%` for favicon
+```bash
+npm install
+npm run deploy
+```
 
-### Changing the repo name
+This will:
 
-If your GitHub repo is not named `VLabs`, update `base` in `vite.config.ts` to match:
+1. Run `npm run build` (TypeScript + Vite with `base: '/VLabs/'`)
+2. Verify `dist/` has correct asset paths
+3. Push `dist/` contents to the **`gh-pages`** branch
+
+Wait 1–3 minutes, then visit:
+
+**https://Vlabs99.github.io/VLabs/**
+
+### Troubleshooting blank white page
+
+| Cause | Fix |
+|--------|-----|
+| Repo name is not `VLabs` | Rename repo to `VLabs` or change `base` in `vite.config.ts` |
+| Pages source is `main` branch | Switch to **`gh-pages`** branch, root folder |
+| Old deploy cache | Hard refresh: **Ctrl+Shift+R** |
+| JS/CSS 404 in DevTools | Re-run `npm run deploy`; check Network tab for `/VLabs/assets/` |
+| Wrong URL | Use **/VLabs/** with trailing slash |
+
+### If your GitHub username or repo name differs
+
+Edit `vite.config.ts`:
 
 ```ts
-base: '/your-repo-name/'
+base: '/YourRepoName/',
 ```
+
+And `homepage` in `package.json` to match.

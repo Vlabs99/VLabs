@@ -77,16 +77,17 @@ export function Contact() {
               <SocialButtons variant="card" />
             </div>
 
-            <motion.a
-              href={APK_DOWNLOAD_URL}
-              download
-              className="animate-in-view btn-primary flex w-full text-sm"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Download className="h-4 w-4" />
-              Download VChat APK
-            </motion.a>
+           <motion.a
+  href="https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="animate-in-view btn-primary flex w-full text-sm"
+  whileHover={{ scale: 1.02 }}
+  whileTap={{ scale: 0.98 }}
+>
+  <Download className="h-4 w-4" />
+  Download VChat APK
+</motion.a>
           </div>
 
           {/* Contact form */}

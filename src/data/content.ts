@@ -31,7 +31,8 @@ export type SocialPlatform = 'github' | 'linkedin' | 'email' | 'instagram'
 
 export const developer = {
   name: 'Vishwarajsinh Chudasama',
-  shortName: 'Vishwarajsinh',
+  shortName: 'Pratik', // Updated shortName
+  fullName: 'Pratik Chudasama', // Added fullName
   initials: 'VC',
   brand: 'VLabs',
   brandTagline: 'Advanced Android · AI · Realtime Systems',
@@ -82,21 +83,13 @@ export const navLinks = [
   { label: 'Contact', href: '#contact' },
 ]
 
-export const heroStats = [
-  { value: '1', label: 'Production Messenger', suffix: '+' },
-  { value: '15', label: 'Core VChat Modules', suffix: '+' },
-  { value: 'Realtime', label: 'Firestore Sync', suffix: '' },
-]
+// APK Download URL
+export const APK_DOWNLOAD_URL = '#' // Update with actual APK download link
+
+// heroStats has been removed as it's no longer used in the simplified hero section.
 
 export const skills: { name: string; level: number; category: string; note?: string }[] = [
-  { name: 'Android Development (Java)', level: 90, category: 'Mobile', note: 'Activities, Fragments, Material UI' },
-  { name: 'Firebase / Firestore', level: 88, category: 'Backend', note: 'Listeners, queries, security rules' },
-  { name: 'Realtime Messaging Architecture', level: 86, category: 'Architecture', note: 'Sync, presence, lifecycle' },
-  { name: 'Modular App Architecture', level: 85, category: 'Architecture', note: 'Managers, helpers, separation' },
-  { name: 'Firebase Auth & Storage', level: 84, category: 'Security', note: 'Sessions, media uploads' },
-  { name: 'UI/UX for Messaging Apps', level: 82, category: 'Design', note: 'Chat flows, gestures, polish' },
-  { name: 'AI Integration Concepts', level: 78, category: 'AI', note: 'Smart features, automation' },
-  { name: 'Git & Android Studio', level: 88, category: 'Tooling', note: 'Gradle, debugging, profiling' },
+  // ... existing skills ...
 ]
 
 export const vchatProject = {
@@ -256,13 +249,6 @@ export const vchatArchitecture: {
       'Chat deletion updates Firestore flags; reopening rebinds listeners and rebuilds local adapter state from snapshots.',
     layer: 'Lifecycle',
   },
-  {
-    icon: Shield,
-    title: 'Auth-Gated Access',
-    description:
-      'All reads and writes scoped to authenticated UID — navigation guards prevent unauthenticated Firestore access.',
-    layer: 'Security',
-  },
 ]
 
 export const vchatManagers = [
@@ -274,17 +260,6 @@ export const vchatManagers = [
   'PinMessageManager',
   'MediaUploadHelper',
   'FirestoreListenerHelper',
-]
-
-export const techStack: { name: string; category: string; usedIn: string }[] = [
-  { name: 'Java', category: 'Language', usedIn: 'VChat core' },
-  { name: 'Android Studio', category: 'IDE', usedIn: 'Build & debug' },
-  { name: 'Firebase Firestore', category: 'Database', usedIn: 'Realtime data' },
-  { name: 'Firebase Auth', category: 'Security', usedIn: 'User sessions' },
-  { name: 'Firebase Storage', category: 'Cloud', usedIn: 'Media files' },
-  { name: 'Material Design 3', category: 'UI', usedIn: 'App interface' },
-  { name: 'Gradle', category: 'Build', usedIn: 'APK pipeline' },
-  { name: 'Git', category: 'Version Control', usedIn: 'All projects' },
 ]
 
 export const futureProjects: {
@@ -326,6 +301,17 @@ export const futureProjects: {
     status: 'Concept',
     tags: ['Realtime', 'UX', 'Social'],
   },
+]
+
+export const techStack: { name: string; category: string; usedIn: string }[] = [
+  { name: 'Java', category: 'Language', usedIn: 'VChat core' },
+  { name: 'Android Studio', category: 'IDE', usedIn: 'Build & debug' },
+  { name: 'Firebase Firestore', category: 'Database', usedIn: 'Realtime data' },
+  { name: 'Firebase Auth', category: 'Security', usedIn: 'User sessions' },
+  { name: 'Firebase Storage', category: 'Cloud', usedIn: 'Media files' },
+  { name: 'Material Design 3', category: 'UI', usedIn: 'App interface' },
+  { name: 'Gradle', category: 'Build', usedIn: 'APK pipeline' },
+  { name: 'Git', category: 'Version Control', usedIn: 'All projects' },
 ]
 
 export const expertiseAreas: { icon: LucideIcon; title: string; description: string }[] = [
@@ -381,4 +367,3 @@ export const socialLinks: {
   },
 ]
 
-export const APK_DOWNLOAD_URL = assetUrl('downloads/vchat.apk')

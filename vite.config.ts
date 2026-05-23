@@ -3,31 +3,31 @@ import react from '@vitejs/plugin-react'
 import { copyFileSync, existsSync } from 'node:fs'
 import { resolve } from 'node:path'
 
-/** GitHub Pages project site: https://<user>.github.io/VLabs/ */
-const base = '/VLabs/'
-
+/**
+ * GitHub Pages project site URL:
+ * https://<username>.github.io/VLabs/
+ *
+ * Repo name MUST be "VLabs" (case-sensitive in URL).
+ */
 export default defineConfig({
+  base: '/VLabs/',
   plugins: [
     react(),
     {
-      name: 'gh-pages-404',
+      name: 'github-pages',
       closeBundle() {
-        const index = resolve(__dirname, 'dist/index.html')
-        const notFound = resolve(__dirname, 'dist/404.html')
+        const dist = resolve(__dirname, 'dist')
+        const index = resolve(dist, 'index.html')
         if (existsSync(index)) {
-          copyFileSync(index, notFound)
+          copyFileSync(index, resolve(dist, '404.html'))
         }
       },
     },
   ],
-  base,
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
-  },
-  preview: {
-    port: 4173,
-    strictPort: true,
+    sourcemap: false,
   },
 })
