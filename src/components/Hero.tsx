@@ -74,10 +74,11 @@ export function Hero() {
                 Explore VChat
               </a>
               <a
-                href={APK_DOWNLOAD_URL}
-                download
-                className="btn-secondary inline-flex items-center justify-center"
-              >
+  href="https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-secondary inline-flex items-center justify-center"
+>
                 <Download className="h-5 w-5" />
                 Download APK
               </a>

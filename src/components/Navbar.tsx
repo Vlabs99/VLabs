@@ -67,7 +67,12 @@ export function Navbar() {
             Contact
             <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
-          <a href={APK_DOWNLOAD_URL} download className="btn-secondary py-2.5 text-sm">
+          <a
+  href="https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="btn-secondary py-2.5 text-sm"
+>
             <Download className="h-4 w-4" />
             <span className="hidden sm:inline">VChat APK</span>
           </a>
@@ -133,11 +138,12 @@ export function Navbar() {
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
                 <a
-                  href={APK_DOWNLOAD_URL}
-                  download
-                  onClick={() => setOpen(false)}
-                  className="btn-secondary flex w-full justify-center text-sm"
-                >
+  href="https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk"
+  target="_blank"
+  rel="noopener noreferrer"
+  onClick={() => setOpen(false)}
+  className="btn-secondary flex w-full justify-center text-sm"
+>
                   <Download className="h-4 w-4" />
                   Download VChat APK
                 </a>
