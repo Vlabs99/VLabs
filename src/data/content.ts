@@ -25,6 +25,8 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 
+import { assetUrl } from '../lib/assets'
+
 export type SocialPlatform = 'github' | 'linkedin' | 'email' | 'instagram'
 
 export const developer = {
@@ -37,8 +39,8 @@ export const developer = {
   education: 'MCA · Computer Science',
   location: 'India',
   email: 'raavishvarajsinh9@gmail.com',
-  profileImage: '/profile.jpeg',
-  profileImageFallback: '/images/profile-placeholder.svg',
+  profileImage: assetUrl('profile.jpeg'),
+  profileImageFallback: assetUrl('images/profile-placeholder.svg'),
   tagline:
     'I build advanced Android apps and modern websites using AI-assisted workflows — merging architecture thinking, creativity, and intelligent tooling to ship scalable realtime systems faster.',
   bio: [
@@ -379,4 +381,4 @@ export const socialLinks: {
   },
 ]
 
-export const APK_DOWNLOAD_URL = '/downloads/vchat.apk'
+export const APK_DOWNLOAD_URL = assetUrl('downloads/vchat.apk')
