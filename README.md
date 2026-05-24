@@ -1,3 +1,13 @@
+![Platform](https://img.shields.io/badge/Platform-Android-00C853?style=for-the-badge)
+
+![Language](https://img.shields.io/badge/Language-Java-orange?style=for-the-badge)
+
+![Backend](https://img.shields.io/badge/Backend-Firebase-yellow?style=for-the-badge)
+
+![Architecture](https://img.shields.io/badge/Architecture-Realtime-blue?style=for-the-badge)
+
+![Status](https://img.shields.io/badge/Status-Active_Development-purple?style=for-the-badge)
+
 # VLabs — Developer Portfolio
 
 Modern developer portfolio of Vishwarajsinh Chudasama focused on Android engineering, realtime systems, Firebase architecture, and AI-assisted development workflows.
