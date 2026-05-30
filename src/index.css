@@ -8,10 +8,11 @@
   }
 
   body {
-    @apply bg-void font-sans text-white antialiased;
-    overflow-x: hidden;
-    letter-spacing: 0.01em;
-  }
+  @apply bg-void font-sans text-white antialiased;
+  overflow-x: hidden;
+  letter-spacing: 0.01em;
+  
+}
 
   h1, h2, h3, h4 {
     @apply tracking-tight;
@@ -160,6 +161,85 @@
     @apply shrink-0;
   }
 
+  .section-divider {
+  position: relative;
+}
+
+.hover-light {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-light::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      500px circle at var(--x) var(--y),
+      rgba(0, 240, 255, 0.10),
+      transparent 40%
+    );
+
+  opacity: 0;
+
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.hover-light:hover::before {
+  opacity: 1;
+}
+
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+  z-index: 9999;
+
+  opacity: 0.035;
+
+  background-image:
+    url("https://grainy-gradients.vercel.app/noise.svg");
+
+  mix-blend-mode: soft-light;
+}
+
+.floating-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.section-divider::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 70%;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(0, 240, 255, 0.22),
+      rgba(139, 92, 246, 0.22),
+      transparent
+    );
+
+  opacity: 0.7;
+}
+
   .profile-glass-frame {
     @apply rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl;
     box-shadow:
@@ -229,15 +309,36 @@
   }
 
   .grid-pattern {
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-    background-size: 60px 60px;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+}
+
+.terminal-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+
+  background-size: 50px 50px;
+
+  animation: terminalGridMove 18s linear infinite;
+}
+
+@keyframes terminalGridMove {
+  from {
+    background-position: 0 0;
   }
 
-  .perspective-3d {
-    perspective: 1200px;
+  to {
+    background-position: 50px 50px;
   }
+}
+
+.perspective-3d {
+  perspective: 1200px;
+}
 
   .preserve-3d {
     transform-style: preserve-3d;
@@ -246,12 +347,23 @@
 
 @layer utilities {
   .animate-in-view {
-    opacity: 0;
-    transform: translateY(24px);
-    transition:
-      opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-      transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-  }
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+
+  transition:
+    opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 1s cubic-bezier(0.16, 1, 0.3, 1);
+
+  filter: blur(8px);
+  will-change: transform, opacity, filter;
+}
+
+.animate-in-view.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
 
   .animate-in-view.visible {
     opacity: 1;

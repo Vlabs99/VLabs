@@ -23,9 +23,55 @@
     const ref = useScrollReveal<HTMLElement>()
 
     return (
-      <section id="vchat" ref={ref} className="section-padding relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/[0.04] via-transparent to-neon-violet/[0.04]" />
-        <div className="absolute left-1/2 top-1/4 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-neon-cyan/5 blur-[150px]" />
+      <section
+  id="vchat"
+  ref={ref}
+  className="section-divider section-padding relative overflow-hidden border-y border-white/[0.04]"
+>
+        {/* Ambient background */}
+<div className="absolute inset-0 bg-gradient-to-b from-neon-cyan/[0.05] via-transparent to-neon-violet/[0.05]" />
+
+{/* Cyber grid */}
+<div className="absolute inset-0 opacity-[0.035]">
+  <div
+    className="absolute inset-0"
+    style={{
+      backgroundImage: `
+        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px)
+      `,
+      backgroundSize: '80px 80px',
+    }}
+  />
+</div>
+
+{/* Ambient glow center */}
+<motion.div
+  animate={{
+    opacity: [0.25, 0.5, 0.25],
+    scale: [1, 1.08, 1],
+  }}
+  transition={{
+    duration: 8,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  }}
+  className="absolute left-1/2 top-1/4 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-neon-cyan/5 blur-[160px]"
+/>
+
+{/* Secondary violet glow */}
+<motion.div
+  animate={{
+    opacity: [0.18, 0.4, 0.18],
+    scale: [1, 1.05, 1],
+  }}
+  transition={{
+    duration: 10,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  }}
+  className="absolute bottom-0 right-0 h-[420px] w-[420px] rounded-full bg-neon-violet/5 blur-[150px]"
+/>
 
         <div className="relative mx-auto max-w-7xl">
           <SectionHeader
@@ -35,7 +81,29 @@
           />
 
           {/* Project header bar */}
-          <div className="animate-in-view glow-border mb-12 flex flex-col gap-6 rounded-3xl glass-card p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.7 }}
+  whileHover={{ y: -4 }}
+  className="animate-in-view glow-border relative mb-12 overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-8"
+>
+  {/* Ambient glow */}
+  <motion.div
+    animate={{
+      opacity: [0.2, 0.45, 0.2],
+      scale: [1, 1.05, 1],
+    }}
+    transition={{
+      duration: 6,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    }}
+    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.12),transparent_35%)]"
+  />
+
+  <div className="relative z-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-neon-cyan to-neon-violet shadow-glow">
                 <Smartphone className="h-7 w-7" />
@@ -68,26 +136,69 @@
               </a>
             </div>
           </div>
+          </motion.div>
 
           {/* Stats */}
-          <div className="mb-16 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+          <div className="relative mb-20 grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-6">
             {vchatProject.stats.map((stat, i) => (
-              <StatCard
-                key={stat.label}
-                value={stat.value}
-                label={stat.label}
-                detail={stat.detail}
-                delay={i * 0.08}
-              />
-            ))}
+  <motion.div
+    key={stat.label}
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: i * 0.08 }}
+    whileHover={{
+      y: -6,
+      scale: 1.02,
+    }}
+    className="relative overflow-hidden rounded-3xl border border-white/[0.06] bg-white/[0.03] shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+  >
+    {/* Ambient glow */}
+    <motion.div
+      animate={{
+        opacity: [0.15, 0.35, 0.15],
+      }}
+      transition={{
+        duration: 4,
+        repeat: Infinity,
+        ease: 'easeInOut',
+      }}
+      className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.10),transparent_45%)]"
+    />
+
+    <div className="relative z-10">
+      <StatCard
+        value={stat.value}
+        label={stat.label}
+        detail={stat.detail}
+        delay={i * 0.08}
+      />
+    </div>
+  </motion.div>
+))}
           </div>
 
           {/* Tech badges */}
-          <div className="animate-in-view mb-16">
+          <div className="animate-in-view relative mb-20 overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:p-8">
+            
+            {/* Ambient tech glow */}
+<motion.div
+  animate={{
+    opacity: [0.18, 0.4, 0.18],
+    scale: [1, 1.06, 1],
+  }}
+  transition={{
+    duration: 6,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  }}
+  className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.12),transparent_35%)]"
+/>
+
             <p className="mb-4 font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">
               Tech Stack
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="relative z-10 flex flex-wrap gap-3">
               {vchatProject.techBadges.map((badge, i) => (
                 <TechBadge key={badge} label={badge} variant="accent" delay={i * 0.04} />
               ))}
@@ -96,10 +207,28 @@
 
           {/* Phone mockup + overview */}
           <div className="mb-20 grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
-            <div className="animate-in-view perspective-3d mx-auto w-full max-w-sm lg:mx-0">
+            <div className="animate-in-view perspective-3d relative mx-auto w-full max-w-sm lg:mx-0">
+              {/* Device ambient glow */}
+<motion.div
+  animate={{
+    opacity: [0.2, 0.45, 0.2],
+    scale: [1, 1.08, 1],
+  }}
+  transition={{
+    duration: 6,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  }}
+  className="absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(0,240,255,0.16),transparent_65%)] blur-3xl"
+/>
               <motion.div
                 className="preserve-3d relative"
-                whileHover={{ rotateY: -6, rotateX: 4 }}
+                whileHover={{
+  rotateY: -8,
+  rotateX: 6,
+  y: -8,
+  scale: 1.02,
+}}
                 transition={{ type: 'spring', stiffness: 180, damping: 20 }}
               >
                 <div className="glow-border relative rounded-[2.75rem] border-[3px] border-white/10 bg-gradient-to-b from-surface to-abyss p-3 shadow-glow-lg">
@@ -158,20 +287,23 @@
             </div>
 
             <div className="animate-in-view space-y-6">
-              <div className="glass-card rounded-2xl p-7">
-                <h4 className="font-display text-lg font-semibold">What makes VChat different</h4>
-                <p className="mt-3 text-sm leading-relaxed text-white/50">
+              <div className="relative overflow-hidden rounded-[28px] border border-white/[0.06] bg-white/[0.03] p-7 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
+                <h4 className="relative z-10 font-display text-lg font-semibold">
+  What makes VChat different
+</h4>
+
+<p className="relative z-10 mt-3 text-sm leading-relaxed text-white/50">
                   Most student projects stop at a basic chat screen. VChat implements the full
                   messaging lifecycle — friends, groups, replies, forwards, pins, typing state,
                   and a manager/helper architecture that keeps Firestore logic out of the UI layer.
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-white/50">
+                <p className="relative z-10 mt-3 text-sm leading-relaxed text-white/50">
                   Every screen is built to handle delete and reopen without duplicate listeners or
                   stale adapters — the kind of stabilization work production apps require.
                 </p>
               </div>
 
-              <div className="glass-card rounded-2xl p-7">
+              <div className="relative overflow-hidden rounded-[28px] border border-white/[0.06] bg-white/[0.03] p-7 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl">
                 <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-neon-violet">
                   Manager / Helper Modules
                 </p>
@@ -190,27 +322,101 @@
           </div>
 
           {/* Feature grid */}
-          <div className="mb-20">
-            <h3 className="animate-in-view mb-8 font-display text-2xl font-bold">
-              <span className="text-gradient">Core Features</span>
-            </h3>
-            <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {vchatFeatures.map((feature, i) => (
-                <FeatureCard
-                  key={feature.title}
-                  icon={feature.icon}
-                  title={feature.title}
-                  description={feature.description}
-                  highlight={feature.highlight}
-                  delay={i * 0.05}
-                />
-              ))}
-            </div>
-          </div>
+          <div className="relative mb-24 overflow-hidden rounded-[36px] border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:p-8 lg:p-10">
+  {/* Ambient glow */}
+  <motion.div
+    animate={{
+      opacity: [0.18, 0.4, 0.18],
+      scale: [1, 1.04, 1],
+    }}
+    transition={{
+      duration: 7,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    }}
+    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.12),transparent_38%)]"
+  />
+
+  {/* Section heading */}
+  <div className="relative z-10 mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+    <div>
+      <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.3em] text-neon-cyan/70">
+        Platform Capabilities
+      </p>
+
+      <h3 className="animate-in-view font-display text-3xl font-black tracking-tight">
+        <span className="bg-[linear-gradient(90deg,#00F0FF,#8B5CF6,#00F0FF)] bg-[length:200%_200%] bg-clip-text text-transparent">
+          Core Features
+        </span>
+      </h3>
+    </div>
+
+    <p className="max-w-md text-sm leading-relaxed text-white/45">
+      Modular realtime infrastructure engineered for scalable messaging,
+      intelligent interaction flows, and production-style application behavior.
+    </p>
+  </div>
+
+  {/* Feature cards */}
+  <div className="relative z-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {vchatFeatures.map((feature, i) => (
+      <motion.div
+        key={feature.title}
+        initial={{ opacity: 0, y: 25 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ delay: i * 0.06 }}
+        whileHover={{
+          y: -8,
+          scale: 1.02,
+        }}
+        className="relative overflow-hidden rounded-3xl border border-white/[0.06] bg-white/[0.03] shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+      >
+        {/* Card glow */}
+        <motion.div
+          animate={{
+            opacity: [0.12, 0.3, 0.12],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.10),transparent_42%)]"
+        />
+
+        <div className="relative z-10">
+          <FeatureCard
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+            highlight={feature.highlight}
+            delay={i * 0.05}
+          />
+        </div>
+      </motion.div>
+    ))}
+  </div>
+</div>
 
           {/* Architecture */}
-          <div>
-            <h3 className="animate-in-view mb-3 font-display text-2xl font-bold">
+                    <div className="relative overflow-hidden rounded-[36px] border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:p-8 lg:p-10">
+  {/* Ambient glow */}
+  <motion.div
+    animate={{
+      opacity: [0.16, 0.38, 0.16],
+      scale: [1, 1.05, 1],
+    }}
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    }}
+    className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,92,246,0.12),transparent_38%)]"
+  />
+
+  <div className="relative z-10">
+    <h3 className="animate-in-view mb-3 font-display text-3xl font-black tracking-tight">
               <span className="text-gradient">Architecture Highlights</span>
             </h3>
             <p className="animate-in-view mb-10 max-w-2xl text-sm text-white/45">
@@ -218,17 +424,29 @@
               helpers own utilities, and listeners stay lifecycle-safe.
             </p>
 
-            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="relative z-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {vchatArchitecture.map((item, i) => (
                 <motion.div
                   key={item.title}
-                  className="animate-in-view glow-border glass-card relative overflow-hidden rounded-2xl p-6"
+                  className="animate-in-view relative overflow-hidden rounded-[28px] border border-white/[0.06] bg-white/[0.03] p-6 shadow-[0_15px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
                   whileHover={{ y: -4 }}
                 >
+
+                  <motion.div
+  animate={{
+    opacity: [0.12, 0.28, 0.12],
+  }}
+  transition={{
+    duration: 5,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  }}
+  className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.10),transparent_42%)]"
+/>
                   <div className="flex items-center justify-between">
                     <item.icon className="h-6 w-6 text-neon-violet" />
                     <span className="font-mono text-[9px] uppercase tracking-widest text-neon-cyan/70">
@@ -241,6 +459,7 @@
               ))}
             </div>
           </div>
+        </div>
         </div>
       </section>
     )
