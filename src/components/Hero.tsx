@@ -346,14 +346,7 @@ const smoothMouseY = useSpring(mouseY, {
     Download APK
   </a>
 
-  <a
-    href="/VLabs/resume/Vishwarajsinh-Chudasama-Resume.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="relative z-10 inline-flex items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3 font-medium text-white/75 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan/40 hover:text-neon-cyan hover:shadow-[0_0_35px_rgba(0,240,255,0.12)]"
-  >
-    Resume
-  </a>
+  
 </motion.div>
 
 {/* Social Links */}
@@ -369,14 +362,7 @@ const smoothMouseY = useSpring(mouseY, {
 
   <SocialButtons variant="icon" />
 
-  <a
-    href="/VLabs/resume/Vishwarajsinh-Chudasama-Resume.pdf"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="inline-flex items-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-white/70 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan/40 hover:text-neon-cyan hover:shadow-[0_0_30px_rgba(0,240,255,0.12)]"
-  >
-    Resume
-  </a>
+  
 </motion.div></div>
 
 {/* Right column: Profile Image (Desktop only) */}
