@@ -1,5 +1,12 @@
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, Instagram, ExternalLink } from 'lucide-react'
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Instagram,
+  MessageCircle,
+  ExternalLink,
+} from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { socialLinks, type SocialPlatform } from '../../data/content'
 
@@ -12,20 +19,33 @@ const platformConfig: Record<
     accent: 'hover:border-white/25 hover:text-white hover:bg-white/10',
     glow: 'group-hover:shadow-[0_0_24px_rgba(255,255,255,0.12)]',
   },
+
   linkedin: {
     icon: Linkedin,
-    accent: 'hover:border-[#0A66C2]/50 hover:text-[#0A66C2] hover:bg-[#0A66C2]/10',
+    accent:
+      'hover:border-[#0A66C2]/50 hover:text-[#0A66C2] hover:bg-[#0A66C2]/10',
     glow: 'group-hover:shadow-[0_0_28px_rgba(10,102,194,0.25)]',
   },
+
   email: {
     icon: Mail,
-    accent: 'hover:border-neon-cyan/40 hover:text-neon-cyan hover:bg-neon-cyan/10',
+    accent:
+      'hover:border-neon-cyan/40 hover:text-neon-cyan hover:bg-neon-cyan/10',
     glow: 'group-hover:shadow-glow',
   },
+
   instagram: {
     icon: Instagram,
-    accent: 'hover:border-[#E1306C]/40 hover:text-[#E1306C] hover:bg-[#E1306C]/10',
+    accent:
+      'hover:border-[#E1306C]/40 hover:text-[#E1306C] hover:bg-[#E1306C]/10',
     glow: 'group-hover:shadow-[0_0_28px_rgba(225,48,108,0.2)]',
+  },
+
+  whatsapp: {
+    icon: MessageCircle,
+    accent:
+      'hover:border-[#25D366]/40 hover:text-[#25D366] hover:bg-[#25D366]/10',
+    glow: 'group-hover:shadow-[0_0_28px_rgba(37,211,102,0.25)]',
   },
 }
 

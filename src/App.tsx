@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { About } from './components/About'
 import { Skills } from './components/Skills'
+import { Academics } from './components/Academics'
 import { FeaturedProject } from './components/FeaturedProject'
-import { Gallery } from './components/Gallery'
-import { FutureProjects } from './components/FutureProjects'
-import { TechStack } from './components/TechStack'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { SystemsTerminal } from './components/SystemsTerminal'
 import { AmbientParticles } from './components/AmbientParticles'
 import { CustomCursor } from './components/CustomCursor'
 import { GitHubStats } from './components/GitHubStats'
+
+import VChat from './pages/projects/VChat'
+import { LatestUpdate } from './components/LatestUpdate'
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -41,7 +43,7 @@ function App() {
   }, [])
 
   return (
-    <>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       {/* Loading Screen */}
       <AnimatePresence>
         {loading && (
@@ -208,24 +210,27 @@ function App() {
         <CustomCursor />
         <Navbar />
 
-        <main>
-          <Hero />
-          <SystemsTerminal />
-          <About />
-          <Skills />
-          <GitHubStats />
-          <FeaturedProject />
-          <Gallery />
-          <FutureProjects />
-          <TechStack />
-          <Contact />
+        <Routes>
+          <Route path="/" element={
+            <main className="relative">
+              <LatestUpdate />
+              <Hero />
+              <SystemsTerminal />
+              <About />
+              <Skills />
+              <Academics />
+              <GitHubStats />
+              <FeaturedProject />
+              <Contact />
+            </main>
+          } />
+          <Route path="/projects/vchat" element={<VChat />} />
+        </Routes>
 
-        </main>
-
-          <div className="noise-overlay" />
+        <div className="noise-overlay" />
         <Footer />
       </div>
-    </>
+    </BrowserRouter>
   )
 }
 

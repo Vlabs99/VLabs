@@ -7,6 +7,7 @@ import {
   GraduationCap,
   MessageSquare,
   Loader2,
+  FileText,
 } from 'lucide-react'
 
 import { useScrollReveal } from '../hooks/useScrollReveal'
@@ -165,17 +166,45 @@ alert(JSON.stringify(data))
               <SocialButtons variant="card" />
             </div>
 
-            <motion.a
-              href="https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="animate-in-view btn-primary flex w-full text-sm"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <Download className="h-4 w-4" />
-              Download VChat APK
-            </motion.a>
+            <div className="animate-in-view flex flex-col gap-3">
+  <motion.a
+    href="https://wa.me/919408280568"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-primary flex w-full text-sm"
+    whileHover={{ scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    <MessageSquare className="h-4 w-4" />
+    Chat on WhatsApp
+  </motion.a>
+
+  <motion.a
+    href="/VLabs/resume/Vishwarajsinh-Chudasama-Resume.pdf"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-secondary flex w-full text-sm"
+    whileHover={{ scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    <FileText className="h-4 w-4" />
+    Download Resume
+  </motion.a>
+
+  <motion.a
+    href="https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="btn-secondary flex w-full text-sm"
+    whileHover={{ scale: 1.02 }}
+    whileTap={{ scale: 0.98 }}
+  >
+    <Download className="h-4 w-4" />
+    Download VChat APK
+  </motion.a>
+</div>
+        
+            
           </div>
 
           <motion.form

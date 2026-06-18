@@ -1,0 +1,59 @@
+﻿D:\AI\Vlabs\public\academics\bca\SEM_2\BCA-Semester-2-Complete.zip
+D:\AI\Vlabs\public\academics\bca\SEM_2\Computer-Organization-And-Architecture.zip
+D:\AI\Vlabs\public\academics\bca\SEM_2\Data-Structures.zip
+D:\AI\Vlabs\public\academics\bca\SEM_2\PHP.zip
+D:\AI\Vlabs\public\academics\bca\SEM_2\System-Analysis-And-Design.zip
+D:\AI\Vlabs\public\academics\bca\SEM_3\BCA-Semester-3-Complete.zip
+D:\AI\Vlabs\public\academics\bca\SEM_3\C++ Programming.zip
+D:\AI\Vlabs\public\academics\bca\SEM_3\Oracle Database.zip
+D:\AI\Vlabs\public\academics\bca\SEM_3\WordPress Development.zip
+D:\AI\Vlabs\public\academics\bca\SEM_4\BCA-Semester-4-Complete.zip
+D:\AI\Vlabs\public\academics\bca\SEM_4\C# Programming.zip
+D:\AI\Vlabs\public\academics\bca\SEM_4\Java Programming.zip
+D:\AI\Vlabs\public\academics\bca\SEM_4\Mixed Materials.zip
+D:\AI\Vlabs\public\academics\bca\SEM_4\Operating Systems.zip
+D:\AI\Vlabs\public\academics\bca\SEM_4\Search Engine Optimization (SEO).zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\BCA-Semester-5-Complete.zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\Cyber Security.zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\J2EE (Java Enterprise Edition).zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\Mixed Materials.zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\Python Programming.zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\BCA-Semester-5-Complete\Cyber Security.zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\BCA-Semester-5-Complete\J2EE (Java Enterprise Edition).zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\BCA-Semester-5-Complete\Mixed Materials.zip
+D:\AI\Vlabs\public\academics\bca\SEM_5\BCA-Semester-5-Complete\Python Programming.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\Android Development.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\ASP.NET Development.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\BCA-Semester-6-Complete.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\Machine Learning.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\Mixed Materials.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\Practical Implementation.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\BCA-Semester-6-Complete\Android Development.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\BCA-Semester-6-Complete\ASP.NET Development.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\BCA-Semester-6-Complete\Machine Learning.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\BCA-Semester-6-Complete\Mixed Materials.zip
+D:\AI\Vlabs\public\academics\bca\SEM_6\BCA-Semester-6-Complete\Practical Implementation.zip
+D:\AI\Vlabs\public\academics\mca\Question-Papers\Semester-1.zip
+D:\AI\Vlabs\public\academics\mca\Question-Papers\Semester-2.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\Cloud-Computing.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\Computer-Networks.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\Data-Structures-and-Algorithms.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\Database-Management-Systems.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\MCA-Semester-1-Complete.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\MCA-Semester-1-Complete\Cloud-Computing.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\MCA-Semester-1-Complete\Computer-Networks.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\MCA-Semester-1-Complete\Data-Structures-and-Algorithms.zip
+D:\AI\Vlabs\public\academics\mca\SEM_1\MCA-Semester-1-Complete\Database-Management-Systems.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\Android-Development.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\Artificial-Intelligence.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\Assignments.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\Frontend-Development.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\MCA-Semester-2-Complete.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\NET-Technology.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\Python-Programming.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\MCA-Semester-2-Complete\Android-Development.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\MCA-Semester-2-Complete\Artificial-Intelligence.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\MCA-Semester-2-Complete\Assignments.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\MCA-Semester-2-Complete\Frontend-Development.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\MCA-Semester-2-Complete\NET-Technology.zip
+D:\AI\Vlabs\public\academics\mca\SEM_2\MCA-Semester-2-Complete\Python-Programming.zip

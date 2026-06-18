@@ -5,7 +5,7 @@ import { developer } from '../data/content'
 import { SocialButtons } from './ui/SocialButtons'
 import { ProfileAvatar } from './ui/ProfileAvatar'
 import { Scene3D } from './Scene3D'
-import { AIParticles } from './ui/AIParticles'
+// import { AIParticles } from './ui/AIParticles'
 import { MagneticButton } from './ui/MagneticButton'
 
 export function Hero() {
@@ -52,7 +52,7 @@ const smoothMouseY = useSpring(mouseY, {
     onMouseMove={handleMouseMove}
     className="relative z-0 flex min-h-screen items-center overflow-hidden pt-24 pb-16"
   >
-    <AIParticles />
+    {/* <AIParticles /> */}
 
     <motion.div
   animate={{
@@ -109,6 +109,26 @@ const smoothMouseY = useSpring(mouseY, {
     <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_right,rgba(0,240,255,0.12),transparent_32%)]" />
 
     <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_left,rgba(139,92,246,0.10),transparent_28%)]" />
+
+    {/* Mobile-only Premium Aurora Background */}
+    <div className="absolute inset-0 z-0 overflow-hidden lg:hidden pointer-events-none opacity-40">
+      <motion.div
+        animate={{
+          x: ['-5%', '5%', '-5%'],
+          y: ['-2%', '2%', '-2%'],
+        }}
+        transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+        className="absolute -top-[10%] left-[-20%] w-[140%] h-[50%] bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.15),transparent_60%)]"
+      />
+      <motion.div
+        animate={{
+          x: ['5%', '-5%', '5%'],
+          y: ['2%', '-2%', '2%'],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+        className="absolute top-[30%] -right-[20%] w-[140%] h-[60%] bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.12),transparent_60%)]"
+      />
+    </div>
 
     {/* Mouse follow glow */}
     <motion.div
@@ -422,6 +442,15 @@ const smoothMouseY = useSpring(mouseY, {
     }}
     className="absolute h-[260px] w-[260px] rounded-full bg-[radial-gradient(circle,rgba(0,240,255,0.18),transparent_68%)] blur-3xl"
   />
+
+  {/* Mobile-only Premium Neon Ring */}
+  <motion.div
+    animate={{ rotate: 360 }}
+    transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
+    className="absolute top-1/2 left-1/2 z-10 h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[conic-gradient(from_0deg,rgba(0,240,255,0.4),rgba(139,92,246,0.2),rgba(217,70,239,0.1),rgba(0,240,255,0.4))] p-[1px] opacity-60"
+  >
+    <div className="h-full w-full rounded-full bg-void" />
+  </motion.div>
 
   <motion.div
     animate={{

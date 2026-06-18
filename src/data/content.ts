@@ -27,7 +27,12 @@ import {
 
 import { assetUrl } from '../lib/assets'
 
-export type SocialPlatform = 'github' | 'linkedin' | 'email' | 'instagram'
+export type SocialPlatform =
+  | 'github'
+  | 'linkedin'
+  | 'email'
+  | 'instagram'
+  | 'whatsapp'
 
 export const developer = {
   name: 'Vishwarajsinh Chudasama',
@@ -80,7 +85,7 @@ export const navLinks = [
   { label: 'Gallery', href: '#gallery' },
   { label: 'Future', href: '#future' },
   { label: 'Stack', href: '#stack' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Feedback', href: '#contact' },
 ]
 
 // APK Download URL
@@ -366,42 +371,153 @@ export const socialLinks: {
     href: 'https://www.instagram.com/chudasama_vishwarajsinh_9/',
     handle: 'chudasama_vishwarajsinh_9',
   },
+  {
+    platform: 'whatsapp',
+    label: 'WhatsApp',
+    href: 'https://wa.me/919408280568',
+    handle: '+91 94082 80568',
+  },
 ]
-
 export const vchatGallery = [
   {
     title: 'Splash Screen',
     description: 'Modern VChat startup screen with branding and loading experience.',
-    image: '/VLabs/screenshots/vchat-splash.jpeg',
+    image: '/screenshots/vchat-splash.jpeg',
   },
   {
     title: 'Chat Sessions',
     description: 'Realtime conversation list with active chats and recent messages.',
-    image: '/VLabs/screenshots/vchat-chat-list.jpeg',
+    image: '/screenshots/vchat-chat-list.jpeg',
   },
   {
     title: 'Private Chat',
     description: 'Direct realtime messaging with reply and typing support.',
-    image: '/VLabs/screenshots/vchat-private-chat.jpeg',
+    image: '/screenshots/vchat-private-chat.jpeg',
   },
   {
     title: 'Group Settings',
     description: 'Manage group members, permissions, and chat customization.',
-    image: '/VLabs/screenshots/vchat-group-setting.jpeg',
+    image: '/screenshots/vchat-group-setting.jpeg',
   },
   {
     title: 'Group Chat',
     description: 'Realtime multi-user group communication powered by Firestore.',
-    image: '/VLabs/screenshots/vchat-group-chat.jpeg',
+    image: '/screenshots/vchat-group-chat.jpeg',
   },
   {
     title: 'User Profile',
     description: 'Personal profile system with user information and customization.',
-    image: '/VLabs/screenshots/vchat-profile.jpeg',
+    image: '/screenshots/vchat-profile.jpeg',
   },
   {
     title: 'User Search',
     description: 'Search users with email and connect instantly.',
-    image: '/VLabs/screenshots/vchat-user-search.jpeg',
+    image: '/screenshots/vchat-user-search.jpeg',
   },
+]
+
+export const academicsData = [
+  {
+    id: 'mca',
+    degree: 'Master of Computer Applications (MCA)',
+    university: 'Veer Narmad South Gujarat University',
+    institution: 'Department of Computer Science',
+    location: 'Surat, Gujarat',
+    duration: '2025 - Present',
+    currentSemester: '3',
+    semesters: [
+      {
+        semester: 'Semester 1',
+        subjects: [
+          { name: 'Cloud Computing', url: 'https://drive.google.com/file/d/1tvR5-T7KK-fH4DQgsfflInQrDJG3VRVW/view?usp=sharing' },
+          { name: 'Computer Networks', url: 'https://drive.google.com/file/d/1LJjvD532E-4MVh-btIPjCq1FUcG-QlTi/view?usp=sharing' },
+          { name: 'Data Structures and Algorithms', url: 'https://drive.google.com/file/d/1YUUfr9SbxWa53hiMMtc2Z9tHuzc6t3xr/view?usp=sharing' },
+          { name: 'Database Management Systems', url: 'https://drive.google.com/file/d/1apht-Z8zIjP1jXGyC6sS9tJSNJOpn34r/view?usp=sharing' },
+          { name: 'Object Oriented Programming', url: 'https://drive.google.com/file/d/1_m6ggX3e9WEALQCLi3pKQOWAF5A2vwBC/view?usp=sharing' },
+        ],
+        zipUrl: 'https://drive.google.com/file/d/1hUdhM49kn2pP2HgDYb5KscrOQapRWUmQ/view?usp=sharing',
+      },
+      {
+        semester: 'Semester 2',
+        subjects: [
+          { name: 'Android Development', url: 'https://drive.google.com/file/d/1prp-3sbE9ryk5ZTBVGVIQSF3dlsUvIvq/view?usp=sharing' },
+          { name: 'Artificial Intelligence', url: 'https://drive.google.com/file/d/11EycYn_6qRKdt7XJOTnqb4VJYH7ED-XG/view?usp=sharing' },
+          { name: 'Assignments', url: 'https://drive.google.com/file/d/1YMuRnAIbv0CuGwwuSbzXvtTxmI919pNk/view?usp=sharing' },
+          { name: 'Frontend Development', url: 'https://drive.google.com/file/d/1t2qmxqvQSExlqhQ7i8qSkw9YjDS5o2H1/view?usp=sharing' },
+          { name: 'NET Technology', url: 'https://drive.google.com/file/d/1x6YHnRX9E8pbYRCKhNjyyIQfppl99wl6/view?usp=sharing' },
+          { name: 'Python Programming', url: 'https://drive.google.com/file/d/1ArDVv_9pcoMAYGGv5uVsxTSldUle6CCg/view?usp=sharing' },
+        ],
+        zipUrl: 'https://drive.google.com/file/d/1W0MBL71U7Fh2_jI5VGQWoW7pn9DNzdSE/view?usp=sharing',
+      },
+      {
+        semester: 'Question Papers',
+        subjects: [
+          { name: 'Semester 1', url: 'https://drive.google.com/file/d/1KGUi6EQMfZSEEL337_Wa250QDU56zX7s/view?usp=sharing' },
+          { name: 'Semester 2', url: 'https://drive.google.com/file/d/1gPISk4OVfW7r7ew3VeIj09UlgAsLBzy4/view?usp=sharing' },
+        ],
+        zipUrl: undefined
+      }
+    ]
+  },
+  {
+    id: 'bca',
+    degree: 'Bachelor of Computer Applications (BCA)',
+    university: 'Saurashtra University',
+    institution: "Bhavan's Shri H.J. Doshi College",
+    location: 'Jamnagar, Gujarat',
+    duration: '2022 - 2025',
+    semesters: [
+      {
+        semester: 'Semester 2',
+        subjects: [
+          { name: 'Computer Organization And Architecture', url: 'https://drive.google.com/file/d/1nTwgyhykyvTGf_0fLJRD6pXV8KYYLvp4/view?usp=sharing' },
+          { name: 'Data Structures', url: 'https://drive.google.com/file/d/1-qD9cDa1_02_nProgFK1U0eilrtMM4tr/view?usp=sharing' },
+          { name: 'PHP', url: 'https://drive.google.com/file/d/1gk7lqcLnAIjVHbYFtb8xGYOzWpP7ESTj/view?usp=sharing' },
+          { name: 'System Analysis And Design', url: 'https://drive.google.com/file/d/1t6U1TKBUcjN59a-R3c-LSPGoyilhhh9T/view?usp=sharing' },
+        ],
+        zipUrl: 'https://drive.google.com/file/d/18yFCCYj3yVR9x8Kp0CJTxVseJKQ14qbd/view?usp=sharing',
+      },
+      {
+        semester: 'Semester 3',
+        subjects: [
+          { name: 'C++ Programming', url: 'https://drive.google.com/file/d/1kB5l3qdVdzk3Q9yW8TdDD1sN6eHYWu9r/view?usp=sharing' },
+          { name: 'Oracle Database', url: 'https://drive.google.com/file/d/17dVyPbmx45OQ5uluHqUmX6zQy3HR6KG6/view?usp=sharing' },
+          { name: 'WordPress Development', url: 'https://drive.google.com/file/d/1BSHXPuecexLuf-hqlFSFoAySOZZ6hDTC/view?usp=sharing' },
+        ],
+        zipUrl: 'https://drive.google.com/file/d/1OiNyjU59RQISpJTQLqJvNcSR6QO_IkG3/view?usp=sharing',
+      },
+      {
+        semester: 'Semester 4',
+        subjects: [
+          { name: 'C# Programming', url: 'https://drive.google.com/file/d/1tawCbPHTIOE7r7Gx_xgnDVxDuXt6lUH9/view?usp=sharing' },
+          { name: 'Java Programming', url: 'https://drive.google.com/file/d/1ivokJzUcn9jROxk0XCkVYZw7sFvQAdx_/view?usp=sharing' },
+          { name: 'Mixed Materials', url: 'https://drive.google.com/file/d/1JuhvVQWE8Uc0p0E-ddAT0PKfVUl6b5YI/view?usp=sharing' },
+          { name: 'Operating Systems', url: 'https://drive.google.com/file/d/1tMWSclNsciHpozYNtPgtaghiXAWGCAT0/view?usp=sharing' },
+          { name: 'Search Engine Optimization (SEO)', url: 'https://drive.google.com/file/d/1bFxvU_6QwjztPRmZpws7yLVQ9hoNmTAG/view?usp=sharing' },
+        ],
+        zipUrl: 'https://drive.google.com/file/d/1fyc5CfPxHuItiMty6MPfjSSOs72GKQCX/view?usp=sharing',
+      },
+      {
+        semester: 'Semester 5',
+        subjects: [
+          { name: 'Cyber Security', url: 'https://drive.google.com/file/d/1bNnp8W0JkPd84Iu3LMlDmhkC5KQFnCCs/view?usp=sharing' },
+          { name: 'J2EE (Java Enterprise Edition)', url: 'https://drive.google.com/file/d/1XSDyIJZ4VCcBo_Rb8nBtiOz18yn6G7HB/view?usp=sharing' },
+          { name: 'Mixed Materials', url: 'https://drive.google.com/file/d/1Bv7EAow1GBLSaKjCtXSm9umqpnXJuF_e/view?usp=sharing' },
+          { name: 'Python Programming', url: 'https://drive.google.com/file/d/1VxQmR4tDmgQ8kxkJ11c5aVYCrE8FDaX0/view?usp=sharing' },
+        ],
+        zipUrl: 'https://drive.google.com/drive/folders/1pD10irgJccr3vgA_phF7JWiKxFCsxX3K?usp=sharing',
+      },
+      {
+        semester: 'Semester 6',
+        subjects: [
+          { name: 'Android Development', url: 'https://drive.google.com/file/d/1pOKc9Ls3_Nq_GgMbr9wD_WBpUMFU43vE/view?usp=sharing' },
+          { name: 'ASP.NET Development', url: 'https://drive.google.com/file/d/1euNkBfMs7oua-ATKnnQNA5j2I-9_TRBu/view?usp=sharing' },
+          { name: 'Machine Learning', url: 'https://drive.google.com/file/d/1_Q2L7vkwuM2BXJVblmgbXtsa-N25n2KF/view?usp=sharing' },
+          { name: 'Mixed Materials', url: 'https://drive.google.com/file/d/1SUHv6CNdLbq4Z_E4TQIl2Sy-rRCPbWkB/view?usp=sharing' },
+          { name: 'Practical Implementation', url: 'https://drive.google.com/file/d/15YQaB3oeaLrdc3PDge5YRMYeEHLzqfew/view?usp=sharing' },
+        ],
+        zipUrl: 'https://drive.google.com/file/d/1_zCG9s2rA669wv9m8bUDfQ2QqMohIA3B/view?usp=sharing',
+      }
+    ]
+  }
 ]

@@ -370,3 +370,24 @@
     transform: translateY(0);
   }
 }
+
+/* Mobile-only Premium Interactions */
+@media (hover: none) and (pointer: coarse) {
+  .btn-primary:active,
+  .btn-secondary:active,
+  .glass-card:active,
+  .social-icon-btn:active,
+  .social-card:active,
+  .nav-cta:active {
+    transform: scale(0.96) !important;
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.25) !important;
+    filter: brightness(1.2);
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+  
+  /* Remove desktop hover states on mobile to prevent sticky hovers */
+  .btn-primary:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
