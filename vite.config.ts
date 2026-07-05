@@ -29,5 +29,15 @@ export default defineConfig({
     assetsDir: 'assets',
     emptyOutDir: true,
     sourcemap: false,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'framer-motion': ['framer-motion'],
+          'tsparticles': ['@tsparticles/engine', '@tsparticles/react', '@tsparticles/slim'],
+          'lucide': ['lucide-react'],
+        },
+      },
+    },
   },
 })

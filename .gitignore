@@ -30,3 +30,9 @@ Thumbs.db
 
 # Local
 *.local
+
+# Local workspace
+scratch/
+
+# TypeScript cache
+*.tsbuildinfo

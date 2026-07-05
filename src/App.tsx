@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -15,31 +15,16 @@ import { AmbientParticles } from './components/AmbientParticles'
 import { CustomCursor } from './components/CustomCursor'
 import { GitHubStats } from './components/GitHubStats'
 
-import VChat from './pages/projects/VChat'
+const VChat = lazy(() => import('./pages/projects/VChat'))
 import { LatestUpdate } from './components/LatestUpdate'
 
 function App() {
   const [loading, setLoading] = useState(true)
-  const [progress, setProgress] = useState(0)
+  const [progress] = useState(100)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval)
-
-          setTimeout(() => {
-            setLoading(false)
-          }, 400)
-
-          return 100
-        }
-
-        return prev + 4
-      })
-    }, 55)
-
-    return () => clearInterval(interval)
+    // Application is mounted and ready, remove artificial delay
+    setLoading(false)
   }, [])
 
   return (
@@ -224,7 +209,11 @@ function App() {
               <Contact />
             </main>
           } />
-          <Route path="/projects/vchat" element={<VChat />} />
+          <Route path="/projects/vchat" element={
+            <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-void text-neon-cyan font-mono text-sm tracking-widest">LOADING SYSTEMS...</div>}>
+              <VChat />
+            </Suspense>
+          } />
         </Routes>
 
         <div className="noise-overlay" />

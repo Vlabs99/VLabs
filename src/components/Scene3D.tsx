@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
+import { useIsMobile } from '../hooks/useIsMobile'
 
-const particles = Array.from({ length: 24 }, (_, i) => ({
+const baseParticles = Array.from({ length: 24 }, (_, i) => ({
   id: i,
   left: `${(i * 17 + 7) % 100}%`,
   top: `${(i * 23 + 11) % 100}%`,
@@ -10,6 +11,9 @@ const particles = Array.from({ length: 24 }, (_, i) => ({
 }))
 
 export function Scene3D() {
+  const isMobile = useIsMobile()
+  const particles = isMobile ? baseParticles.slice(0, 8) : baseParticles
+
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
       <div className="mesh-bg absolute inset-0" />
@@ -28,13 +32,15 @@ export function Scene3D() {
 
       <motion.div
         className="absolute -left-40 top-[10%] h-[28rem] w-[28rem] rounded-full bg-neon-cyan/10 blur-[140px]"
-        animate={{ scale: [1, 1.15, 1], opacity: [0.25, 0.45, 0.25] }}
+        animate={isMobile ? {} : { scale: [1, 1.15, 1], opacity: [0.25, 0.45, 0.25] }}
         transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ opacity: isMobile ? 0.25 : undefined }}
       />
       <motion.div
         className="absolute -right-32 top-[20%] h-96 w-96 rounded-full bg-neon-violet/12 blur-[120px]"
-        animate={{ scale: [1.1, 1, 1.1], opacity: [0.35, 0.15, 0.35] }}
+        animate={isMobile ? {} : { scale: [1.1, 1, 1.1], opacity: [0.35, 0.15, 0.35] }}
         transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
+        style={{ opacity: isMobile ? 0.25 : undefined }}
       />
 
       {/* Floating particles */}
@@ -48,7 +54,7 @@ export function Scene3D() {
             width: p.size,
             height: p.size,
           }}
-          animate={{ y: [0, -30, 0], opacity: [0.2, 0.8, 0.2] }}
+          animate={isMobile ? {} : { y: [0, -30, 0], opacity: [0.2, 0.8, 0.2] }}
           transition={{
             duration: p.duration,
             repeat: Infinity,

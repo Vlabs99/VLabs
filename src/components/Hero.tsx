@@ -1,14 +1,17 @@
 import { motion, useMotionValue, useSpring } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { ArrowDown, Download, Code2 } from 'lucide-react'
 import { developer } from '../data/content'
 import { SocialButtons } from './ui/SocialButtons'
 import { ProfileAvatar } from './ui/ProfileAvatar'
-import { Scene3D } from './Scene3D'
-// import { AIParticles } from './ui/AIParticles'
+
+const Scene3D = lazy(() => import('./Scene3D').then((m) => ({ default: m.Scene3D })))
+const AIParticles = lazy(() => import('./ui/AIParticles').then((m) => ({ default: m.AIParticles })))
 import { MagneticButton } from './ui/MagneticButton'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export function Hero() {
+  const isMobile = useIsMobile()
   const roles = [
   'AI Systems Engineer',
   'Full Stack Product Builder',
@@ -17,6 +20,7 @@ export function Hero() {
 ]
 
   const [currentRole, setCurrentRole] = useState(0)
+  const [isSceneReady, setIsSceneReady] = useState(false)
 
 const mouseX = useMotionValue(0)
 const mouseY = useMotionValue(0)
@@ -30,6 +34,19 @@ const smoothMouseY = useSpring(mouseY, {
   damping: 25,
   stiffness: 120,
 })
+
+  useEffect(() => {
+    if (!isMobile) {
+      setIsSceneReady(true)
+    } else {
+      const idleCallback = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500))
+      const id = idleCallback(() => setIsSceneReady(true))
+      return () => {
+        if (window.cancelIdleCallback) window.cancelIdleCallback(id)
+        else clearTimeout(id as any)
+      }
+    }
+  }, [isMobile])
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -52,10 +69,17 @@ const smoothMouseY = useSpring(mouseY, {
     onMouseMove={handleMouseMove}
     className="relative z-0 flex min-h-screen items-center overflow-hidden pt-24 pb-16"
   >
-    {/* <AIParticles /> */}
+    {!isMobile && (
+      <Suspense fallback={null}>
+        <AIParticles />
+      </Suspense>
+    )}
+    {isMobile && (
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.08),transparent_80%)]" />
+    )}
 
     <motion.div
-  animate={{
+  animate={isMobile ? {} : {
     y: [0, -40, 0],
     x: [0, 20, 0],
   }}
@@ -65,10 +89,11 @@ const smoothMouseY = useSpring(mouseY, {
     ease: 'easeInOut',
   }}
   className="floating-orb left-[-120px] top-[10%] h-[320px] w-[320px] bg-neon-cyan"
+  style={{ opacity: isMobile ? 0.4 : 1 }}
 />
 
 <motion.div
-  animate={{
+  animate={isMobile ? {} : {
     y: [0, 30, 0],
     x: [0, -25, 0],
   }}
@@ -78,13 +103,14 @@ const smoothMouseY = useSpring(mouseY, {
     ease: 'easeInOut',
   }}
   className="floating-orb bottom-[0%] right-[-120px] h-[360px] w-[360px] bg-neon-violet"
+  style={{ opacity: isMobile ? 0.4 : 1 }}
 />
 
 
     {/* Ambient radial glows */}
     {/* Floating ambient layer */}
 <motion.div
-  animate={{
+  animate={isMobile ? {} : {
     rotate: [0, 360],
   }}
   transition={{
@@ -96,7 +122,7 @@ const smoothMouseY = useSpring(mouseY, {
 />
 
 <motion.div
-  animate={{
+  animate={isMobile ? {} : {
     rotate: [360, 0],
   }}
   transition={{
@@ -111,9 +137,9 @@ const smoothMouseY = useSpring(mouseY, {
     <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_bottom_left,rgba(139,92,246,0.10),transparent_28%)]" />
 
     {/* Mobile-only Premium Aurora Background */}
-    <div className="absolute inset-0 z-0 overflow-hidden lg:hidden pointer-events-none opacity-40">
+    <div className="absolute inset-0 z-0 overflow-hidden lg:hidden pointer-events-none opacity-20">
       <motion.div
-        animate={{
+        animate={isMobile ? {} : {
           x: ['-5%', '5%', '-5%'],
           y: ['-2%', '2%', '-2%'],
         }}
@@ -121,7 +147,7 @@ const smoothMouseY = useSpring(mouseY, {
         className="absolute -top-[10%] left-[-20%] w-[140%] h-[50%] bg-[radial-gradient(ellipse_at_center,rgba(0,240,255,0.15),transparent_60%)]"
       />
       <motion.div
-        animate={{
+        animate={isMobile ? {} : {
           x: ['5%', '-5%', '5%'],
           y: ['2%', '-2%', '2%'],
         }}
@@ -155,7 +181,7 @@ const smoothMouseY = useSpring(mouseY, {
 
     {/* Animated ambient particles */}
     <motion.div
-      animate={{
+      animate={isMobile ? {} : {
         y: [0, -30, 0],
         opacity: [0.25, 0.55, 0.25],
       }}
@@ -168,7 +194,7 @@ const smoothMouseY = useSpring(mouseY, {
     />
 
     <motion.div
-      animate={{
+      animate={isMobile ? {} : {
         y: [0, 24, 0],
         opacity: [0.2, 0.45, 0.2],
       }}
@@ -181,7 +207,7 @@ const smoothMouseY = useSpring(mouseY, {
     />
 
     <motion.div
-      animate={{
+      animate={isMobile ? {} : {
         y: [0, -18, 0],
         opacity: [0.15, 0.35, 0.15],
       }}
@@ -195,7 +221,11 @@ const smoothMouseY = useSpring(mouseY, {
 
     {/* 3D Scene */}
     <div className="relative z-0">
-      <Scene3D />
+      {isSceneReady && (
+        <Suspense fallback={null}>
+          <Scene3D />
+        </Suspense>
+      )}
     </div>
 
     {/* Main content */}
@@ -205,7 +235,7 @@ const smoothMouseY = useSpring(mouseY, {
         {/* Desktop: Two-column layout | Mobile: Single column */}
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-24 lg:items-center">
           {/* Left column: Bio and content */}
-          <div className="relative flex flex-col justify-center overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 shadow-[0_10px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:p-8 lg:p-10 lg:pr-8">
+          <div className="relative flex flex-col justify-center overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-8 lg:p-10 lg:pr-8">
   {/* Animated gradient border glow */}
   <motion.div
     animate={{
@@ -318,11 +348,11 @@ const smoothMouseY = useSpring(mouseY, {
   initial={{ opacity: 0, y: 15 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.45, duration: 0.5 }}
-  className="mt-6 max-w-2xl text-base leading-relaxed text-white/65 sm:text-lg"
+  className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
 >
   VLabs is an independent engineering portfolio focused on AI-assisted applications, Android development, modern web platforms, Windows software, and scalable realtime systems.
 
-  <span className="mt-4 block text-white/45">
+  <span className="mt-4 block text-white/50">
     From intelligent automation tools and interactive digital experiences to production-style messaging infrastructure and cross-platform applications, every project is designed with modern architecture, performance, and creative engineering in mind.
   </span>
 </motion.p>
@@ -350,7 +380,7 @@ const smoothMouseY = useSpring(mouseY, {
 
   <MagneticButton
   href="#vchat"
-  className="relative z-10 btn-primary inline-flex items-center justify-center shadow-[0_0_30px_rgba(0,240,255,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_45px_rgba(0,240,255,0.28)]"
+  className="relative z-10 btn-primary inline-flex items-center justify-center shadow-[0_0_30px_rgba(0,240,255,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_45px_rgba(0,240,255,0.28)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
 >
   <Code2 className="h-5 w-5" />
   Explore VChat
@@ -360,7 +390,7 @@ const smoothMouseY = useSpring(mouseY, {
     href="https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk"
     target="_blank"
     rel="noopener noreferrer"
-    className="relative z-10 btn-secondary inline-flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan/40 hover:shadow-[0_0_35px_rgba(0,240,255,0.12)]"
+    className="relative z-10 btn-secondary inline-flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan/40 hover:shadow-[0_0_35px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
   >
     <Download className="h-5 w-5" />
     Download APK
@@ -474,11 +504,11 @@ const smoothMouseY = useSpring(mouseY, {
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ delay: 1 }}
-  className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/30 transition-all duration-300 hover:text-neon-cyan"
+  className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/30 transition-all duration-300 hover:text-neon-cyan focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
   aria-label="Scroll to about"
 >
   <motion.div
-    animate={{
+    animate={isMobile ? {} : {
       y: [0, 10, 0],
       opacity: [0.5, 1, 0.5],
     }}

@@ -52,7 +52,7 @@ export function Footer() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer panel */}
-        <div className="relative overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-10">
+        <div className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-10">
           {/* Panel glow */}
           <motion.div
             animate={{
@@ -71,7 +71,7 @@ export function Footer() {
             <div>
               <motion.a
                 href="#hero"
-                className="group inline-flex items-center gap-5"
+                className="group inline-flex items-center gap-5 rounded-3xl focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-4 focus-visible:ring-offset-[#070b19]"
                 whileHover={{ scale: 1.02 }}
               >
                 {/* Logo */}
@@ -112,7 +112,7 @@ export function Footer() {
                 </div>
               </motion.a>
 
-              <p className="mt-7 max-w-md text-sm leading-relaxed text-white/45">
+              <p className="mt-7 max-w-md text-sm leading-relaxed text-white/70">
                 VLabs is an independent engineering portfolio focused on AI-assisted applications,
                 realtime infrastructure, modern interfaces, cross-platform software, and scalable
                 digital systems.
@@ -144,7 +144,7 @@ export function Footer() {
                 <div className="flex items-center gap-2 rounded-2xl border border-white/[0.06] bg-white/[0.03] px-4 py-3">
                   <Cpu className="h-4 w-4 text-neon-violet" />
 
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/45">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-white/50">
                     AI Enhanced Workflow
                   </span>
                 </div>
@@ -163,7 +163,7 @@ export function Footer() {
                     key={link.href}
                     href={link.href}
                     whileHover={{ x: 4 }}
-                    className="group flex items-center justify-between rounded-2xl border border-transparent bg-white/[0.02] px-4 py-3 text-sm text-white/55 transition-all duration-300 hover:border-neon-cyan/15 hover:bg-neon-cyan/[0.04] hover:text-neon-cyan"
+                    className="group flex items-center justify-between rounded-2xl border border-transparent bg-white/[0.02] px-4 py-3 text-sm text-white/55 transition-all duration-300 hover:border-neon-cyan/15 hover:bg-neon-cyan/[0.04] hover:text-neon-cyan focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b19]"
                   >
                     {link.label}
 
@@ -180,7 +180,7 @@ export function Footer() {
               </p>
 
               <div className="space-y-4">
-                <div className="rounded-[28px] border border-white/[0.06] bg-white/[0.03] p-5 backdrop-blur-xl">
+                <div className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl">
                   <div className="flex items-center gap-3">
                     <Sparkles className="h-5 w-5 text-neon-cyan" />
 
@@ -189,21 +189,21 @@ export function Footer() {
                         Open for Collaborations
                       </p>
 
-                      <p className="mt-1 text-xs leading-relaxed text-white/45">
+                      <p className="mt-1 text-xs leading-relaxed text-white/50">
                         AI systems, applications, modern interfaces, and realtime products.
                       </p>
                     </div>
                   </div>
                 </div>
 
-                <div className="rounded-[28px] border border-white/[0.06] bg-white/[0.03] p-5 backdrop-blur-xl">
+                <div className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/35">
+                      <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-white/50">
                         Engineering Links
                       </p>
 
-                      <p className="mt-2 text-sm text-white/55">
+                      <p className="mt-2 text-sm text-white/70">
                         Explore repositories, systems, and products.
                       </p>
                     </div>
@@ -224,12 +224,12 @@ export function Footer() {
             <div className="flex items-center gap-3">
               <Activity className="h-4 w-4 text-neon-cyan" />
 
-              <p className="font-mono text-xs text-white/35">
+              <p className="font-mono text-xs text-white/50">
                 © {year} VLabs · Engineered by {developer.name}
               </p>
             </div>
 
-            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/20">
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-white/50">
               React • Tailwind • Framer Motion • AI Assisted Engineering
             </p>
           </div>

@@ -22,9 +22,9 @@ export function FutureProjects() {
           {futureProjects.map((project, i) => (
             <motion.article
               key={project.title}
-              className="animate-in-view glow-border glass-card group relative overflow-hidden rounded-3xl p-8"
+              className="animate-in-view glow-border group relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-8 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
               style={{ transitionDelay: `${i * 100}ms` }}
-              whileHover={{ y: -6 }}
+              whileHover={{ y: -4 }}
             >
               <div className="absolute -right-4 -top-4 h-32 w-32 rounded-full bg-neon-cyan/5 blur-2xl transition-all duration-500 group-hover:bg-neon-cyan/10" />
 
@@ -39,14 +39,14 @@ export function FutureProjects() {
                       {project.status}
                     </span>
                   </div>
-                  <p className="mt-3 text-sm leading-relaxed text-white/45">
+                  <p className="mt-3 text-sm leading-relaxed text-white/70">
                     {project.description}
                   </p>
                   <div className="mt-5 flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-md border border-white/8 bg-white/[0.03] px-2.5 py-1 font-mono text-[10px] text-white/40"
+                        className="rounded-md border border-white/10 bg-white/[0.03] px-2.5 py-1 font-mono text-[10px] text-white/50"
                       >
                         {tag}
                       </span>

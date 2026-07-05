@@ -88,7 +88,7 @@ export function SystemsTerminal() {
         />
 
         {/* Terminal */}
-        <div className="terminal-grid animate-in-view relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-[#050816]/90 shadow-[0_20px_80px_rgba(0,0,0,0.55)] backdrop-blur-2xl">
+        <div className="terminal-grid animate-in-view relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
           {/* Scanline */}
           <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
             <div
@@ -137,7 +137,7 @@ export function SystemsTerminal() {
                     duration: 0.45,
                   }}
                   viewport={{ once: true }}
-                  className="flex items-start gap-3 font-mono text-sm text-white/75"
+                  className="flex items-start gap-3 font-mono text-sm leading-relaxed text-white/70"
                 >
                   <span className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-neon-cyan shadow-[0_0_12px_rgba(0,240,255,0.8)]" />
 
@@ -146,7 +146,7 @@ export function SystemsTerminal() {
               ))}
 
               {currentTyping && (
-  <div className="flex items-start gap-3 font-mono text-sm text-white/75">
+  <div className="flex items-start gap-3 font-mono text-sm leading-relaxed text-white/70">
     <span className="mt-[7px] h-2 w-2 shrink-0 rounded-full bg-neon-violet shadow-[0_0_12px_rgba(139,92,246,0.9)]" />
 
     <span>{currentTyping}</span>
@@ -193,7 +193,7 @@ export function SystemsTerminal() {
       whileHover={{
         y: -4,
       }}
-      className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 backdrop-blur-xl transition-all duration-300"
+      className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300"
     >
       <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/35">
         {item.label}
@@ -222,7 +222,7 @@ export function SystemsTerminal() {
 
             {/* Bottom cards */}
             <div className="mt-10 grid gap-4 md:grid-cols-3">
-              <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 backdrop-blur-xl">
+              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300">
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-neon-cyan/10">
                   <Cpu className="h-5 w-5 text-neon-cyan" />
                 </div>
@@ -231,13 +231,13 @@ export function SystemsTerminal() {
                   AI Workflows
                 </h3>
 
-                <p className="mt-2 text-sm leading-relaxed text-white/45">
+                <p className="mt-2 text-sm leading-relaxed text-white/50">
                   Intelligent automation systems and AI-assisted engineering
                   pipelines designed for modern software products.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 backdrop-blur-xl">
+              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300">
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-neon-violet/10">
                   <Activity className="h-5 w-5 text-neon-violet" />
                 </div>
@@ -246,13 +246,13 @@ export function SystemsTerminal() {
                   Realtime Systems
                 </h3>
 
-                <p className="mt-2 text-sm leading-relaxed text-white/45">
+                <p className="mt-2 text-sm leading-relaxed text-white/50">
                   Scalable communication layers, synchronized application state,
                   and responsive realtime infrastructure.
                 </p>
-              </div>
+              </motion.div>
 
-              <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-5 backdrop-blur-xl">
+              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300">
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-neon-magenta/10">
                   <ShieldCheck className="h-5 w-5 text-neon-magenta" />
                 </div>
@@ -261,11 +261,11 @@ export function SystemsTerminal() {
                   Production Architecture
                 </h3>
 
-                <p className="mt-2 text-sm leading-relaxed text-white/45">
+                <p className="mt-2 text-sm leading-relaxed text-white/50">
                   Modern frontend systems, deployment-ready interfaces, and
                   scalable engineering-focused application design.
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>

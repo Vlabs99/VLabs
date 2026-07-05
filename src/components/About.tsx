@@ -99,7 +99,7 @@ export function About() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
+              className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
             >
               {/* Ambient glow */}
               <motion.div
@@ -115,10 +115,11 @@ export function About() {
               />
 
               <div className="relative z-10 p-4">
-                <div className="overflow-hidden rounded-[28px] border border-white/[0.06] bg-black/40">
+                <div className="overflow-hidden rounded-2xl border border-white/[0.05] bg-black/40">
                   <img
-                    src="/VLabs/images/developer-photo.jpeg"
+                    src="/VLabs/images/developer-photo.webp"
                     alt="Developer portrait"
+                    loading="lazy"
                     className="mx-auto max-h-[760px] w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
@@ -132,7 +133,7 @@ export function About() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative overflow-hidden rounded-[36px] border border-white/[0.06] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:p-10"
+                className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-10"
               >
                 {/* Glow */}
                 <motion.div
@@ -158,8 +159,8 @@ export function About() {
                         key={i}
                         className={`leading-relaxed ${
                           i === 0
-                            ? 'text-lg font-medium text-white/75'
-                            : 'text-[15px] text-white/55'
+                            ? 'text-lg font-medium text-white/70'
+                            : 'text-[15px] text-white/50'
                         }`}
                       >
                         {paragraph}
@@ -182,10 +183,10 @@ export function About() {
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.08 }}
                       whileHover={{
-                        y: -6,
+                        y: -4,
                         scale: 1.02,
                       }}
-                      className="relative overflow-hidden rounded-[28px] border border-white/[0.06] bg-white/[0.03] p-6 shadow-[0_15px_50px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
+                      className="relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
                     >
                       {/* Glow */}
                       <motion.div
@@ -231,10 +232,10 @@ export function About() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
                   whileHover={{
-                    y: -8,
+                    y: -4,
                     scale: 1.02,
                   }}
-                  className="relative overflow-hidden rounded-[30px] border border-white/[0.06] bg-white/[0.03] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
+                  className="relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
                 >
                   {/* Glow */}
                   <motion.div
@@ -275,10 +276,10 @@ export function About() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
                 whileHover={{
-                  y: -6,
+                  y: -4,
                   scale: 1.01,
                 }}
-                className="group relative overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-7 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl"
+                className="group relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-7 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
               >
                 {/* Glow */}
                 <motion.div

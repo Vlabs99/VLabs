@@ -73,7 +73,7 @@ export function Academics() {
                   setActiveDegree(degree.id)
                   setExpandedSemester(null)
                 }}
-                className={`relative px-6 py-2.5 text-sm font-medium transition-colors ${
+                className={`relative px-6 py-2.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${
                   activeDegree === degree.id ? 'text-white' : 'text-white/50 hover:text-white/80'
                 }`}
               >
@@ -101,7 +101,7 @@ export function Academics() {
               className="space-y-12"
             >
               {/* Education Details Card */}
-              <div className="glow-border glass-card rounded-3xl p-8 relative overflow-hidden">
+              <div className="glow-border relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
                 <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-neon-cyan to-neon-violet" />
                 <div className="flex flex-col md:flex-row gap-8 justify-between items-start md:items-center">
                   <div className="space-y-4">
@@ -156,15 +156,15 @@ export function Academics() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                        className={`relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-300 ${
                           isExpanded 
-                            ? 'bg-white/[0.04] border-neon-cyan/30 shadow-[0_0_30px_rgba(0,240,255,0.1)]' 
-                            : 'bg-white/[0.02] border-white/[0.06] hover:bg-white/[0.04] hover:border-white/10'
+                            ? 'border-neon-cyan/30 bg-white/[0.04] shadow-[0_0_30px_rgba(0,240,255,0.1)]' 
+                            : 'border-white/[0.05] bg-white/[0.02] shadow-[0_15px_60px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.04]'
                         }`}
                       >
                         <button
                           onClick={() => handleSemesterClick(semester.semester)}
-                          className="flex w-full items-center justify-between p-6 text-left"
+                          className="flex w-full items-center justify-between p-6 text-left focus:outline-none focus-visible:bg-white/5"
                         >
                           <div className="flex items-center gap-4">
                             <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors ${
@@ -176,7 +176,7 @@ export function Academics() {
                               <h5 className={`font-semibold transition-colors ${isExpanded ? 'text-white' : 'text-white/80'}`}>
                                 {semester.semester}
                               </h5>
-                              <p className="text-xs text-white/40 mt-1">
+                              <p className="mt-1 text-xs text-white/50">
                                 {semester.subjects.length} Subjects
                               </p>
                             </div>
@@ -209,7 +209,7 @@ export function Academics() {
                                       <Wrapper 
                                         key={subject.name}
                                         {...(subject.url ? { href: subject.url, target: '_blank', rel: 'noopener noreferrer' } : {})}
-                                        className="flex items-center gap-3 rounded-xl border border-white/5 bg-black/20 p-3"
+                                        className="flex items-center gap-3 rounded-xl border border-white/5 bg-black/20 p-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                                       >
                                         <FileText className="h-4 w-4 text-neon-violet/70 shrink-0" />
                                         <span className="text-sm text-white/70 truncate" title={subject.name}>
@@ -225,7 +225,7 @@ export function Academics() {
                                     href={semester.zipUrl}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="btn-primary mt-4 flex w-full justify-center items-center gap-2 text-sm py-3"
+                                    className="btn-primary mt-4 flex w-full justify-center items-center gap-2 text-sm py-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                                   >
                                     <Download className="h-4 w-4" />
                                     Complete Semester Material

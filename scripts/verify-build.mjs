@@ -27,7 +27,7 @@ if (!existsSync(indexPath)) {
   }
 }
 
-for (const file of ['profile.jpeg', '.nojekyll', 'favicon.svg']) {
+for (const file of ['profile.webp', '.nojekyll', 'favicon.svg']) {
   if (!existsSync(resolve(dist, file))) {
     errors.push(`dist/${file} is missing`)
   }

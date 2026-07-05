@@ -77,10 +77,10 @@ export function Gallery() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
               whileHover={{
-                y: -10,
+                y: -4,
                 scale: 1.02,
               }}
-              className="group relative overflow-hidden rounded-[30px] border border-white/[0.06] bg-white/[0.03] shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
+              className="group relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
             >
               {/* Card ambient glow */}
               <motion.div
@@ -97,7 +97,7 @@ export function Gallery() {
 
               {/* Image wrapper */}
               <div className="relative z-10 p-4">
-                <div className="relative overflow-hidden rounded-[24px] border border-white/[0.06] bg-black/40">
+                <div className="relative overflow-hidden rounded-2xl border border-white/[0.05] bg-black/40">
                   {/* Shine effect */}
                   <motion.div
                     animate={{
@@ -114,6 +114,7 @@ export function Gallery() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className="mx-auto max-h-[720px] w-auto object-contain transition-transform duration-700 group-hover:scale-[1.04]"
                   />
 
@@ -125,7 +126,7 @@ export function Gallery() {
                           {item.title}
                         </h3>
 
-                        <p className="mt-2 text-sm leading-relaxed text-white/55">
+                        <p className="mt-2 text-sm leading-relaxed text-white/70">
                           {item.description}
                         </p>
                       </div>
@@ -133,7 +134,7 @@ export function Gallery() {
                       <button
                         type="button"
                         onClick={() => setSelectedImage(item.image)}
-                        className="rounded-xl border border-white/10 bg-black/40 p-3 text-white/70 backdrop-blur transition-all duration-300 hover:border-neon-cyan/40 hover:text-neon-cyan hover:shadow-[0_0_25px_rgba(0,240,255,0.18)]"
+                        className="rounded-xl border border-white/10 bg-black/40 p-3 text-white/70 backdrop-blur transition-all duration-300 hover:border-neon-cyan/40 hover:text-neon-cyan hover:shadow-[0_0_25px_rgba(0,240,255,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                         aria-label={`Expand ${item.title}`}
                       >
                         <Maximize2 className="h-4 w-4" />
@@ -174,7 +175,8 @@ export function Gallery() {
             <button
               type="button"
               onClick={() => setSelectedImage(null)}
-              className="absolute right-5 top-5 z-[110] rounded-full border border-white/10 bg-black/40 p-3 text-white transition-all duration-300 hover:border-neon-cyan/40 hover:text-neon-cyan hover:shadow-[0_0_25px_rgba(0,240,255,0.18)]"
+              className="absolute right-5 top-5 z-[110] rounded-full border border-white/10 bg-black/40 p-3 text-white transition-all duration-300 hover:border-neon-cyan/40 hover:text-neon-cyan hover:shadow-[0_0_25px_rgba(0,240,255,0.18)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              aria-label="Close modal"
             >
               <X className="h-6 w-6" />
             </button>
@@ -182,7 +184,7 @@ export function Gallery() {
             <motion.img
               src={selectedImage}
               alt="Expanded screenshot"
-              className="relative z-10 max-h-[95vh] max-w-full rounded-[28px] border border-white/[0.08] shadow-[0_30px_100px_rgba(0,0,0,0.6)] object-contain"
+              className="relative z-10 max-h-[95vh] max-w-full rounded-[32px] border border-white/[0.08] shadow-[0_30px_100px_rgba(0,0,0,0.6)] object-contain"
               initial={{ scale: 0.92 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.92 }}

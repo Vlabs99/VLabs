@@ -45,7 +45,7 @@ export const developer = {
   education: 'MCA · Computer Science',
   location: 'India',
   email: 'raavishvarajsinh9@gmail.com',
-  profileImage: assetUrl('profile.jpeg'),
+  profileImage: assetUrl('preview.webp'),
   profileImageFallback: assetUrl('images/profile-placeholder.svg'),
   tagline:
     'I build advanced Android apps and modern websites using AI-assisted workflows — merging architecture thinking, creativity, and intelligent tooling to ship scalable realtime systems faster.',
@@ -356,7 +356,7 @@ export const socialLinks: {
   {
     platform: 'linkedin',
     label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/vishvarajsinh-chudasama-07162a363/',
+    href: 'https://www.linkedin.com/in/vishwarajsinh-chudasama',
     handle: 'vishvarajsinh-chudasama',
   },
   {
@@ -382,37 +382,37 @@ export const vchatGallery = [
   {
     title: 'Splash Screen',
     description: 'Modern VChat startup screen with branding and loading experience.',
-    image: '/screenshots/vchat-splash.jpeg',
+    image: '/screenshots/vchat-splash.webp',
   },
   {
     title: 'Chat Sessions',
     description: 'Realtime conversation list with active chats and recent messages.',
-    image: '/screenshots/vchat-chat-list.jpeg',
+    image: '/screenshots/vchat-chat-list.webp',
   },
   {
     title: 'Private Chat',
     description: 'Direct realtime messaging with reply and typing support.',
-    image: '/screenshots/vchat-private-chat.jpeg',
+    image: '/screenshots/vchat-private-chat.webp',
   },
   {
     title: 'Group Settings',
     description: 'Manage group members, permissions, and chat customization.',
-    image: '/screenshots/vchat-group-setting.jpeg',
+    image: '/screenshots/vchat-group-setting.webp',
   },
   {
     title: 'Group Chat',
     description: 'Realtime multi-user group communication powered by Firestore.',
-    image: '/screenshots/vchat-group-chat.jpeg',
+    image: '/screenshots/vchat-group-chat.webp',
   },
   {
     title: 'User Profile',
     description: 'Personal profile system with user information and customization.',
-    image: '/screenshots/vchat-profile.jpeg',
+    image: '/screenshots/vchat-preview.webp',
   },
   {
     title: 'User Search',
     description: 'Search users with email and connect instantly.',
-    image: '/screenshots/vchat-user-search.jpeg',
+    image: '/screenshots/vchat-user-search.webp',
   },
 ]
 

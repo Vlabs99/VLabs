@@ -76,7 +76,7 @@ export function FeaturedProject() {
           transition={{ duration: 0.7 }}
           whileHover={{ y: -4 }}
           onClick={() => navigate('/projects/vchat')}
-          className="animate-in-view glow-border relative mb-12 overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.03] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-8 cursor-pointer group"
+          className="animate-in-view glow-border relative mb-12 overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-8 cursor-pointer group"
         >
           {/* Ambient glow */}
           <motion.div
@@ -104,7 +104,7 @@ export function FeaturedProject() {
                     {vchatProject.status}
                   </span>
                 </div>
-                <p className="mt-1 text-sm text-white/40">
+                <p className="mt-1 text-sm text-white/50">
                   Inspired by {vchatProject.inspiration} · {vchatProject.version}
                 </p>
               </div>
@@ -112,7 +112,7 @@ export function FeaturedProject() {
             <div className="flex flex-wrap gap-3" onClick={(e) => e.stopPropagation()}>
               <Link
                 to="/projects/vchat"
-                className="btn-primary text-sm"
+                className="btn-primary text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
               >
                 View Project
                 <ArrowRight className="h-4 w-4" />
@@ -121,7 +121,7 @@ export function FeaturedProject() {
                 href={APK_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary text-sm"
+                className="btn-secondary text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
               >
                 <Download className="mr-1.5 h-4 w-4" />
                 Download APK
@@ -131,7 +131,7 @@ export function FeaturedProject() {
         </motion.div>
 
         {/* Tech badges */}
-        <div className="animate-in-view relative overflow-hidden rounded-[32px] border border-white/[0.06] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-2xl sm:p-8">
+        <div className="animate-in-view relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-8">
           {/* Ambient tech glow */}
           <motion.div
             animate={{

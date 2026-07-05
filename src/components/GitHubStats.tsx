@@ -39,7 +39,7 @@ export function GitHubStats() {
             Live Development Ecosystem
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-white/55">
+          <p className="mx-auto mt-5 max-w-2xl text-white/70">
             Building intelligent applications, realtime infrastructure,
             automation systems, and scalable digital products through modern
             engineering workflows.
@@ -61,9 +61,9 @@ export function GitHubStats() {
                 }}
                 viewport={{ once: true }}
                 whileHover={{
-                  y: -6,
+                  y: -4,
                 }}
-                className="hover-light group relative overflow-hidden rounded-3xl border border-white/[0.06] bg-white/[0.03] p-7 backdrop-blur-2xl"
+                className="hover-light group relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-7 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
               >
                 {/* Glow */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,240,255,0.12),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -73,7 +73,7 @@ export function GitHubStats() {
                     <Icon className="h-6 w-6 text-neon-cyan" />
                   </div>
 
-                  <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-white/35">
+                  <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.25em] text-white/50">
                     {stat.label}
                   </p>
 

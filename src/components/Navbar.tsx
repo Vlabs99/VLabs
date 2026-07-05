@@ -334,7 +334,7 @@ export function Navbar() {
     },
     {
       label: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/vishvarajsinh-chudasama-07162a363/',
+      href: 'https://www.linkedin.com/in/vishwarajsinh-chudasama',
       desc: 'vishvarajsinh-chudasama',
       icon: Linkedin,
       isExternal: true,
@@ -441,7 +441,7 @@ export function Navbar() {
             : 'bg-[#050816]'
         }`}
       >
-        <nav className="relative mx-auto mt-3 flex max-w-6xl items-center justify-between gap-4 rounded-2xl border border-white/[0.06] bg-white/[0.03] px-4 py-3.5 shadow-[0_8px_40px_rgba(0,0,0,0.35)] backdrop-blur-2xl before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)] before:opacity-80 sm:px-6 lg:px-8">
+        <nav className="relative mx-auto mt-3 flex max-w-6xl items-center justify-between gap-4 rounded-2xl border border-white/[0.05] bg-white/[0.02] px-4 py-3.5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)] before:opacity-80 sm:px-6 lg:px-8">
           <a
             href="#hero"
             className="group flex shrink-0 items-center gap-3"
@@ -504,7 +504,7 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`nav-link rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] ${
+                  className={`nav-link rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${
                     activeSection === link.href
                       ? 'bg-white/5 text-neon-cyan shadow-[0_0_20px_rgba(0,240,255,0.18)]'
                       : ''
@@ -523,7 +523,7 @@ export function Navbar() {
             >
               <button
                 type="button"
-                className={`nav-link flex items-center gap-1 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] ${
+                className={`nav-link flex items-center gap-1 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${
                   openDropdown === 'downloads' ? 'bg-white/5 text-neon-cyan' : ''
                 }`}
               >
@@ -544,7 +544,7 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                    className="absolute right-0 top-full mt-2 w-72 rounded-2xl border border-white/[0.08] bg-[#070b19]/95 p-2 shadow-[0_16px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl z-[9999]"
+                    className="absolute right-0 top-full mt-2 w-72 rounded-2xl border border-white/[0.05] bg-[#070b19]/95 p-2 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl z-[9999]"
                   >
                     <div className="flex flex-col gap-1">
                       {downloadsItems.map((item) => (
@@ -553,7 +553,7 @@ export function Navbar() {
                           href={item.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/80 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_15px_rgba(0,240,255,0.1)] group"
+                          className="flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/80 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_15px_rgba(0,240,255,0.1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b19] group"
                         >
                           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/5 bg-white/[0.02] transition-colors group-hover:border-neon-cyan/20 group-hover:bg-neon-cyan/10">
                             <item.icon className="h-4 w-4 text-white/60 transition-colors group-hover:text-neon-cyan" />
@@ -583,7 +583,7 @@ export function Navbar() {
             >
               <button
                 type="button"
-                className={`nav-link flex items-center gap-1 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] ${
+                className={`nav-link flex items-center gap-1 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${
                   openDropdown === 'contact' ? 'bg-white/5 text-neon-cyan' : ''
                 }`}
               >
@@ -604,7 +604,7 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.95 }}
                     transition={{ duration: 0.2, ease: 'easeOut' }}
-                    className="absolute right-0 top-full mt-2 w-72 rounded-2xl border border-white/[0.08] bg-[#070b19]/95 p-2 shadow-[0_16px_40px_rgba(0,0,0,0.6)] backdrop-blur-2xl z-[9999]"
+                    className="absolute right-0 top-full mt-2 w-72 rounded-2xl border border-white/[0.05] bg-[#070b19]/95 p-2 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl z-[9999]"
                   >
                     <div className="flex flex-col gap-1">
                       {contactDropdownItems.map((item) => (
@@ -613,7 +613,7 @@ export function Navbar() {
                           href={item.href}
                           target={item.isExternal ? '_blank' : undefined}
                           rel={item.isExternal ? 'noopener noreferrer' : undefined}
-                          className="flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/80 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_15px_rgba(0,240,255,0.1)] group"
+                          className="flex items-center gap-3 rounded-xl px-4 py-3 text-left text-sm text-white/80 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_15px_rgba(0,240,255,0.1)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b19] group"
                         >
                           <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/5 bg-white/[0.02] transition-colors group-hover:border-neon-cyan/20 group-hover:bg-neon-cyan/10">
                             <item.icon className="h-4 w-4 text-white/60 transition-colors group-hover:text-neon-cyan" />
@@ -643,7 +643,7 @@ export function Navbar() {
           <button
             type="button"
             onClick={() => setOpen(!open)}
-            className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-white/80 backdrop-blur-md transition-colors hover:border-neon-cyan/30 xl:hidden z-[9999]"
+            className="rounded-xl border border-white/10 bg-white/5 p-2.5 text-white/80 backdrop-blur-md transition-colors hover:border-neon-cyan/30 xl:hidden z-[9999] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
             aria-label="Toggle menu"
           >
             {open ? (
@@ -682,7 +682,7 @@ export function Navbar() {
                       <a
                         href={link.href}
                         onClick={() => setOpen(false)}
-                        className={`block rounded-xl px-4 py-4 font-medium transition-all duration-300 ${
+                        className={`block rounded-xl px-4 py-4 font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
                           activeSection === link.href
                             ? 'bg-black text-neon-cyan border border-neon-cyan/20'
                             : 'bg-black text-white/75 hover:text-neon-cyan'
@@ -703,7 +703,7 @@ export function Navbar() {
                     <button
                       type="button"
                       onClick={() => setMobileDownloadsOpen(!mobileDownloadsOpen)}
-                      className="flex w-full items-center justify-between rounded-xl bg-black px-4 py-4 font-medium text-white/75 hover:text-neon-cyan transition-colors text-left"
+                      className="flex w-full items-center justify-between rounded-xl bg-black px-4 py-4 font-medium text-white/75 hover:text-neon-cyan transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                     >
                       <span>Downloads</span>
                       <motion.div
@@ -730,7 +730,7 @@ export function Navbar() {
                               target="_blank"
                               rel="noopener noreferrer"
                               onClick={() => setOpen(false)}
-                              className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-left text-sm text-white/60 hover:text-neon-cyan hover:bg-white/5 transition-all"
+                              className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-left text-sm text-white/60 hover:text-neon-cyan hover:bg-white/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                             >
                               <item.icon className="h-4 w-4 shrink-0 text-white/40" />
                               <div className="flex-1 min-w-0">
@@ -755,7 +755,7 @@ export function Navbar() {
                     <button
                       type="button"
                       onClick={() => setMobileContactOpen(!mobileContactOpen)}
-                      className="flex w-full items-center justify-between rounded-xl bg-black px-4 py-4 font-medium text-white/75 hover:text-neon-cyan transition-colors text-left"
+                      className="flex w-full items-center justify-between rounded-xl bg-black px-4 py-4 font-medium text-white/75 hover:text-neon-cyan transition-colors text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                     >
                       <span>Contact Info</span>
                       <motion.div
@@ -782,7 +782,7 @@ export function Navbar() {
                               target={item.isExternal ? '_blank' : undefined}
                               rel={item.isExternal ? 'noopener noreferrer' : undefined}
                               onClick={() => setOpen(false)}
-                              className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-left text-sm text-white/60 hover:text-neon-cyan hover:bg-white/5 transition-all"
+                              className="flex items-center gap-3 rounded-xl px-4 py-3.5 text-left text-sm text-white/60 hover:text-neon-cyan hover:bg-white/5 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black"
                             >
                               <item.icon className="h-4 w-4 shrink-0 text-white/40" />
                               <div className="flex-1 min-w-0">

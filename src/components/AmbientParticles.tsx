@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion'
+import { useIsMobile } from '../hooks/useIsMobile'
 
-const particles = Array.from({ length: 18 })
+const baseParticles = Array.from({ length: 18 })
 
 export function AmbientParticles() {
+  const isMobile = useIsMobile()
+  const particles = isMobile ? baseParticles.slice(0, 4) : baseParticles
+
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       {particles.map((_, index) => {

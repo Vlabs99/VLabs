@@ -1,16 +1,20 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, MessageSquare, Shield, Smartphone, Server, Zap, Github, Download, Activity, GitBranch, Layers, Database, Image as ImageIcon, X } from 'lucide-react'
+import { ArrowLeft, MessageSquare, Shield, Smartphone, Server, Zap, GitBranch, Image as ImageIcon, X, Globe, Github, Download, Users, UserPlus, Smile, Reply, Bell, MonitorSmartphone, Database, Monitor, Layers, Code2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+const LIVE_DEMO_URL = "https://v-chat-web.vercel.app/chat";
+const GITHUB_URL = "https://github.com/Vlabs99/VChat-Web";
+const APK_URL = "https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk";
+
 const screenshots = [
-  { title: "Splash Screen", image: `${import.meta.env.BASE_URL}screenshots/vchat-splash.jpeg` },
-  { title: "Chat Sessions", image: `${import.meta.env.BASE_URL}screenshots/vchat-chat-list.jpeg` },
-  { title: "Private Chat", image: `${import.meta.env.BASE_URL}screenshots/vchat-private-chat.jpeg` },
-  { title: "Group Settings", image: `${import.meta.env.BASE_URL}screenshots/vchat-group-setting.jpeg` },
-  { title: "Group Chat", image: `${import.meta.env.BASE_URL}screenshots/vchat-group-chat.jpeg` },
-  { title: "User Profile", image: `${import.meta.env.BASE_URL}screenshots/vchat-profile.jpeg` },
-  { title: "User Search", image: `${import.meta.env.BASE_URL}screenshots/vchat-user-search.jpeg` },
+  { title: "Splash Screen", image: `${import.meta.env.BASE_URL}screenshots/vchat-splash.webp` },
+  { title: "Chat Sessions", image: `${import.meta.env.BASE_URL}screenshots/vchat-chat-list.webp` },
+  { title: "Private Chat", image: `${import.meta.env.BASE_URL}screenshots/vchat-private-chat.webp` },
+  { title: "Group Settings", image: `${import.meta.env.BASE_URL}screenshots/vchat-group-setting.webp` },
+  { title: "Group Chat", image: `${import.meta.env.BASE_URL}screenshots/vchat-group-chat.webp` },
+  { title: "User Profile", image: `${import.meta.env.BASE_URL}screenshots/vchat-preview.webp` },
+  { title: "User Search", image: `${import.meta.env.BASE_URL}screenshots/vchat-user-search.webp` },
 ];
 
 const milestones = [
@@ -54,38 +58,82 @@ export default function VChat() {
               transition={{ delay: 0.1 }}
               className="text-5xl md:text-7xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/50 mb-6"
             >
-              VChat
+              VChat Messenger
             </motion.h1>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="inline-flex flex-col sm:flex-row items-center justify-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md mb-10 shadow-[0_0_30px_rgba(0,240,255,0.05)]"
+            >
+              <div className="flex items-center gap-3 px-5 py-2.5 rounded-xl bg-green-500/10 border border-green-500/20">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                </span>
+                <span className="text-green-400 font-bold tracking-wide">Production Ready</span>
+              </div>
+              
+              <div className="w-full sm:w-px h-px sm:h-8 bg-white/10"></div>
+              
+              <div className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                 <span className="text-white/50 font-mono text-sm uppercase tracking-wider">Version:</span>
+                 <span className="text-white font-bold tracking-wide">v1.0</span>
+              </div>
+              
+              <div className="w-full sm:w-px h-px sm:h-8 bg-white/10"></div>
+              
+              <div className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
+                 <span className="text-white/50 font-mono text-sm uppercase tracking-wider">Platform:</span>
+                 <span className="text-white font-bold tracking-wide">Android + Web</span>
+              </div>
+            </motion.div>
+            
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-xl md:text-2xl text-neon-cyan font-mono mb-8"
+              className="max-w-3xl mx-auto text-xl text-white/60 leading-relaxed mb-6"
             >
-              Native Android Messaging Platform
+              A modern real-time messaging platform inspired by WhatsApp, built with React, TypeScript, Firebase and Android Native.
             </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="max-w-3xl mx-auto text-lg text-white/60 leading-relaxed"
-            >
-              A feature-rich, real-time Android chat application built with modern Java and Firebase. VChat provides a seamless messaging experience with advanced features like read receipts, typing indicators, and end-to-end media sharing.
-            </motion.p>
-            
+
+            {/* Project Links Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-wrap items-center justify-center gap-4 mt-12"
+              className="flex flex-col md:flex-row items-stretch justify-center gap-4 mt-12 w-full max-w-4xl mx-auto"
             >
-              <a href="#" className="btn-primary">
-                <Download className="h-5 w-5" />
-                <span>Download APK</span>
+              <a 
+                href={LIVE_DEMO_URL} 
+                target="_blank" 
+                rel="noreferrer"
+                aria-label="Live Demo"
+                className="flex-1 w-full px-6 py-4 rounded-xl bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan hover:text-void flex items-center justify-center gap-3 transition-all duration-300 font-bold tracking-wide shadow-[0_0_20px_rgba(0,240,255,0.15)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] hover:-translate-y-1"
+              >
+                <Globe className="w-5 h-5 shrink-0" />
+                <span>Live Demo</span>
               </a>
-              <a href="#" className="btn-secondary">
-                <Github className="h-5 w-5" />
-                <span>Source Code</span>
+              <a 
+                href={GITHUB_URL} 
+                target="_blank" 
+                rel="noreferrer"
+                aria-label="GitHub Repository"
+                className="flex-1 w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/40 text-white flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] font-semibold"
+              >
+                <Github className="w-5 h-5 shrink-0" />
+                <span>GitHub Repository</span>
+              </a>
+              <a 
+                href={APK_URL} 
+                target="_blank" 
+                rel="noreferrer"
+                aria-label="Download APK"
+                className="flex-1 w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/40 text-white flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] font-semibold"
+              >
+                <Download className="w-5 h-5 shrink-0" />
+                <span>Download APK</span>
               </a>
             </motion.div>
           </section>
@@ -107,21 +155,18 @@ export default function VChat() {
           </section>
 
           {/* Project Statistics */}
-          <section className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+          <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { label: 'Current Status', value: 'Active', icon: Activity },
-              { label: 'Version', value: 'v1.0.0', icon: GitBranch },
-              { label: 'Platform', value: 'Native Android', icon: Smartphone },
-              { label: 'Architecture', value: 'MVVM', icon: Layers },
-              { label: 'Core Features', value: '10+', icon: Zap },
-              { label: 'Firebase Services', value: '4 Modules', icon: Database }
+              { label: '25+ Features', icon: Zap },
+              { label: 'Real-time Firebase', icon: Server },
+              { label: 'Android + Web', icon: Smartphone },
+              { label: 'Production Ready', icon: Shield }
             ].map((stat, idx) => (
-              <div key={idx} className="glass-card p-6 flex flex-col items-center text-center group hover:border-neon-cyan/30 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-white/[0.04] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <stat.icon className="h-6 w-6 text-neon-cyan group-hover:text-neon-violet transition-colors" />
+              <div key={idx} className="glass-card p-6 flex flex-col items-center justify-center text-center group hover:-translate-y-1 hover:border-neon-cyan/50 hover:shadow-[0_10px_30px_rgba(0,240,255,0.15)] transition-all duration-300">
+                <div className="w-12 h-12 rounded-full bg-white/[0.04] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 border border-white/5 group-hover:border-neon-cyan/30 group-hover:bg-neon-cyan/10">
+                  <stat.icon className="h-6 w-6 text-neon-cyan group-hover:text-white transition-colors" />
                 </div>
-                <div className="text-2xl font-display font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-xs text-white/50 uppercase tracking-widest font-mono">{stat.label}</div>
+                <div className="text-lg font-display font-bold text-white/90 group-hover:text-neon-cyan transition-colors">{stat.label}</div>
               </div>
             ))}
           </section>
@@ -142,6 +187,7 @@ export default function VChat() {
                     <img 
                       src={screen.image}
                       alt={screen.title}
+                      loading="lazy"
                       className="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-300"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-abyss via-transparent to-transparent opacity-80" />
@@ -169,46 +215,77 @@ export default function VChat() {
           {/* Features */}
           <section>
             <h2 className="text-3xl font-display font-bold mb-10 text-center text-white">
-              Key Features
+              Feature Highlights
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { title: 'Realtime Messaging', desc: 'Instantaneous message delivery and state synchronization.' },
-                { title: 'Group Chats', desc: 'Create and manage group conversations with multiple participants.' },
-                { title: 'Friend Requests', desc: 'Robust user discovery and social connection management.' },
-                { title: 'Typing Indicator', desc: 'Real-time feedback when conversation partners are typing.' },
-                { title: 'Reply Messages', desc: 'Thread-like contextual replies to specific messages.' },
-                { title: 'Forward Messages', desc: 'Seamlessly share messages across different chats.' },
-                { title: 'Message Reactions', desc: 'Expressive emoji reactions to individual messages.' },
-                { title: 'Message Info', desc: 'Detailed read receipts and delivery timestamps.' },
-                { title: 'Group Management', desc: 'Admin controls, participant roles, and group settings.' },
-                { title: 'Dark Theme', desc: 'Native dark mode support for comfortable night viewing.' }
+                { icon: MessageSquare, title: 'Real-time Messaging', desc: 'Instant one-to-one messaging powered by Firebase.' },
+                { icon: Users, title: 'Group Chats', desc: 'Create and manage groups with admin controls.' },
+                { icon: UserPlus, title: 'Friend System', desc: 'Send requests, manage friends, block and unblock users.' },
+                { icon: Smile, title: 'Message Reactions', desc: 'React to messages with emojis.' },
+                { icon: Reply, title: 'Reply & Forward', desc: 'Reply to specific messages and forward conversations.' },
+                { icon: Bell, title: 'Notifications', desc: 'Receive real-time in-app notifications.' },
+                { icon: MonitorSmartphone, title: 'Responsive Web', desc: 'Android-like experience across Desktop, Tablet and Mobile.' },
+                { icon: Database, title: 'Firebase Backend', desc: 'Authentication, Firestore and Storage integration.' }
               ].map((feature, idx) => (
-                <div key={idx} className="glass-card p-8 border-white/5 hover:border-neon-cyan/30 transition-colors">
-                  <div className="w-10 h-10 rounded-full bg-white/[0.04] flex items-center justify-center mb-4">
-                    <div className="w-2 h-2 rounded-full bg-neon-cyan" />
+                <div key={idx} className="glass-card p-6 flex flex-col items-center justify-start text-center group hover:-translate-y-1 hover:border-neon-cyan/50 hover:shadow-[0_10px_30px_rgba(0,240,255,0.15)] transition-all duration-300 h-full">
+                  <div className="w-16 h-16 shrink-0 rounded-full bg-white/[0.04] flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300 border border-white/5 group-hover:border-neon-cyan/30 group-hover:bg-neon-cyan/10">
+                    <feature.icon className="h-8 w-8 text-neon-cyan group-hover:text-white transition-colors" />
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{feature.title}</h3>
-                  <p className="text-white/50 leading-relaxed">{feature.desc}</p>
+                  <h3 className="text-lg font-bold text-white/90 mb-3 group-hover:text-neon-cyan transition-colors">{feature.title}</h3>
+                  <p className="text-sm text-white/50 leading-relaxed group-hover:text-white/70 transition-colors">{feature.desc}</p>
                 </div>
               ))}
             </div>
           </section>
 
           {/* Tech Stack */}
-          <section className="glass-card p-8 md:p-14 relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 p-12 opacity-[0.03] pointer-events-none">
-              <Server className="w-96 h-96" />
+          <section className="relative overflow-hidden text-center">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-12 opacity-[0.02] pointer-events-none">
+              <Server className="w-[30rem] h-[30rem]" />
             </div>
-            <h2 className="text-3xl font-display font-bold mb-10 text-white relative z-10 flex items-center gap-4">
+            <h2 className="text-3xl font-display font-bold mb-10 text-white relative z-10 flex items-center justify-center gap-4">
               <Server className="h-8 w-8 text-neon-cyan" />
               Technology Stack
             </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 relative z-10">
-              {['Java', 'XML', 'Firebase Authentication', 'Firestore', 'Firebase Storage', 'Firebase Cloud Messaging'].map((tech, idx) => (
-                <div key={idx} className="flex items-center gap-3 p-5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-colors">
-                  <div className="w-2 h-2 rounded-full bg-neon-violet" />
-                  <span className="text-white/80 font-medium">{tech}</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 relative z-10 text-left">
+              {[
+                { 
+                  title: 'Frontend', 
+                  icon: Monitor, 
+                  techs: ['React', 'TypeScript', 'Tailwind CSS', 'Vite']
+                },
+                { 
+                  title: 'Backend', 
+                  icon: Database, 
+                  techs: ['Firebase Authentication', 'Cloud Firestore', 'Firebase Storage']
+                },
+                { 
+                  title: 'Android', 
+                  icon: Smartphone, 
+                  techs: ['Java', 'Android SDK', 'XML']
+                },
+                { 
+                  title: 'Architecture', 
+                  icon: Layers, 
+                  techs: ['MVVM', 'Repository Pattern', 'Component Based UI']
+                }
+              ].map((category, idx) => (
+                <div key={idx} className="glass-card p-6 flex flex-col h-full group hover:border-neon-cyan/40 hover:shadow-[0_10px_30px_rgba(0,240,255,0.1)] transition-all duration-300">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 shrink-0 rounded-full bg-white/[0.04] flex items-center justify-center border border-white/5 group-hover:border-neon-cyan/30 group-hover:bg-neon-cyan/10 transition-colors duration-300">
+                      <category.icon className="w-6 h-6 text-neon-cyan group-hover:text-white transition-colors" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white/90 group-hover:text-neon-cyan transition-colors">{category.title}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-auto">
+                    {category.techs.map((tech, techIdx) => (
+                      <span key={techIdx} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-neon-cyan/50 hover:bg-neon-cyan/10 text-white/80 text-sm font-medium transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] hover:text-white cursor-default">
+                        <Code2 className="w-3.5 h-3.5 text-neon-cyan/70" />
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
@@ -254,6 +331,45 @@ export default function VChat() {
                   {item}
                 </span>
               ))}
+            </div>
+          </section>
+
+          {/* CTA */}
+          <section className="text-center pt-10 pb-10 border-t border-white/10">
+            <h2 className="text-4xl md:text-5xl font-display font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/50">
+              Experience VChat
+            </h2>
+            <div className="flex flex-col md:flex-row items-stretch justify-center gap-4 w-full max-w-4xl mx-auto">
+              <a 
+                href={LIVE_DEMO_URL} 
+                target="_blank" 
+                rel="noreferrer"
+                aria-label="Live Demo"
+                className="flex-1 w-full px-6 py-4 rounded-xl bg-neon-cyan/10 border border-neon-cyan/50 text-neon-cyan hover:bg-neon-cyan hover:text-void flex items-center justify-center gap-3 transition-all duration-300 font-bold tracking-wide shadow-[0_0_20px_rgba(0,240,255,0.15)] hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] hover:-translate-y-1"
+              >
+                <Globe className="w-5 h-5 shrink-0" />
+                <span>Live Demo</span>
+              </a>
+              <a 
+                href={GITHUB_URL} 
+                target="_blank" 
+                rel="noreferrer"
+                aria-label="GitHub Repository"
+                className="flex-1 w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/40 text-white flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] font-semibold"
+              >
+                <Github className="w-5 h-5 shrink-0" />
+                <span>GitHub Repository</span>
+              </a>
+              <a 
+                href={APK_URL} 
+                target="_blank" 
+                rel="noreferrer"
+                aria-label="Download APK"
+                className="flex-1 w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 hover:border-neon-cyan/40 text-white flex items-center justify-center gap-3 transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] font-semibold"
+              >
+                <Download className="w-5 h-5 shrink-0" />
+                <span>Download APK</span>
+              </a>
             </div>
           </section>
 
