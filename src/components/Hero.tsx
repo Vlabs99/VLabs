@@ -1,6 +1,6 @@
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useEffect, useState, lazy, Suspense } from 'react'
-import { ArrowDown, Download, Code2 } from 'lucide-react'
+import { ArrowDown, Code2 } from 'lucide-react'
 import { developer } from '../data/content'
 import { SocialButtons } from './ui/SocialButtons'
 import { ProfileAvatar } from './ui/ProfileAvatar'
@@ -362,7 +362,7 @@ const smoothMouseY = useSpring(mouseY, {
   initial={{ opacity: 0, y: 15 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 0.55, duration: 0.5 }}
-  className="relative mt-10 flex flex-col gap-4 sm:flex-row sm:flex-wrap"
+  className="relative mt-12 flex w-full justify-start sm:mt-14"
 >
   {/* Ambient CTA glow */}
   <motion.div
@@ -383,18 +383,8 @@ const smoothMouseY = useSpring(mouseY, {
   className="relative z-10 btn-primary inline-flex items-center justify-center shadow-[0_0_30px_rgba(0,240,255,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_45px_rgba(0,240,255,0.28)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
 >
   <Code2 className="h-5 w-5" />
-  Explore VChat
+  Explore Projects
 </MagneticButton>
-
-  <a
-    href="https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="relative z-10 btn-secondary inline-flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:border-neon-cyan/40 hover:shadow-[0_0_35px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
-  >
-    <Download className="h-5 w-5" />
-    Download APK
-  </a>
 
   
 </motion.div>
@@ -404,7 +394,7 @@ const smoothMouseY = useSpring(mouseY, {
   initial={{ opacity: 0 }}
   animate={{ opacity: 1 }}
   transition={{ delay: 0.65, duration: 0.5 }}
-  className="mt-10 flex flex-wrap items-center gap-4"
+  className="mt-12 flex flex-wrap items-center gap-4 sm:mt-14"
 >
   <p className="font-mono text-xs uppercase tracking-widest text-white/40">
     Follow
