@@ -82,15 +82,18 @@ export const navLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'VChat', href: '#vchat' },
+  { label: 'RouteGuard', href: '#routeguard' },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Future', href: '#future' },
   { label: 'Stack', href: '#stack' },
   { label: 'Feedback', href: '#contact' },
 ]
 
-// APK Download URL
+// APK Download URLs
 export const APK_DOWNLOAD_URL =
-  'https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk' // Update with actual APK download link
+  'https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk'
+export const ROUTEGUARD_GITHUB_URL = 'https://github.com/Vlabs99/RouteGuard'
+export const ROUTEGUARD_APK_DOWNLOAD_URL: string | undefined = undefined
 
 // heroStats has been removed as it's no longer used in the simplified hero section.
 
@@ -121,6 +124,65 @@ export const vchatProject = {
     'Material Design',
   ],
 }
+
+export const routeguardProject = {
+  name: 'RouteGuard',
+  version: 'v1.0 Production Build',
+  status: 'Production Ready',
+  summary:
+    'An Intelligent Real-Time Road Hazard Reporting & Travel Safety Platform engineered for Android — powered by WorkManager background travel mode monitoring, community trust & verification engine, and 100% multi-language localization (English, Hindi, Gujarati).',
+  inspiration: 'Google Maps · Waze · Community Safety Intelligence',
+  stats: [
+    { label: 'Background Engine', value: 'WorkManager', detail: 'Proximity alerts' },
+    { label: 'Verification', value: 'Trust Engine', detail: 'Upvote & Confirmation' },
+    { label: 'Localization', value: '3 Languages', detail: 'En / Hi / Gu' },
+    { label: 'Mapping', value: 'OpenStreetMap', detail: 'OsmDroid rendering' },
+  ],
+  techBadges: [
+    'Java',
+    'Android Studio',
+    'WorkManager',
+    'OpenStreetMap (OsmDroid)',
+    'Firestore',
+    'Firebase Auth',
+    'Firebase Storage',
+    'Material Design 3',
+    'Multi-Language (En/Hi/Gu)',
+  ],
+}
+
+export const routeguardGallery = [
+  {
+    title: 'Home Map & Search',
+    description: 'Interactive OpenStreetMap navigation with real-time hazard markers, travel mode toggle, and search radius control.',
+    image: '/screenshots/routeguard-home.jpg',
+  },
+  {
+    title: 'Report Creation',
+    description: 'Streamlined report submission flow with category selection, description, location tagging, and photo evidence attachment.',
+    image: '/screenshots/routeguard-report.jpg',
+  },
+  {
+    title: 'Report Details & Verification',
+    description: 'Community trust verification engine with voting, confirmation tracking, comments, and trust score metrics.',
+    image: '/screenshots/routeguard-details.jpg',
+  },
+  {
+    title: 'Notifications Center',
+    description: 'Real-time activity feed and hazard alerts grouped by time sections (Today, Yesterday, Older).',
+    image: '/screenshots/routeguard-notifications.jpg',
+  },
+  {
+    title: 'User Profile & Trust Level',
+    description: 'Personal profile with community reputation, reporter levels, and behavior risk classification.',
+    image: '/screenshots/routeguard-profile.jpg',
+  },
+  {
+    title: 'My Reports History',
+    description: 'Community report management dashboard with active/expired filtering and report actions.',
+    image: '/screenshots/routeguard-my-reports.jpg',
+  },
+]
 
 export const vchatFeatures: {
   icon: LucideIcon

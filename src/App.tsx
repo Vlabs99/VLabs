@@ -16,6 +16,7 @@ import { CustomCursor } from './components/CustomCursor'
 import { GitHubStats } from './components/GitHubStats'
 
 const VChat = lazy(() => import('./pages/projects/VChat'))
+const RouteGuard = lazy(() => import('./pages/projects/RouteGuard'))
 import { LatestUpdate } from './components/LatestUpdate'
 
 function App() {
@@ -212,6 +213,11 @@ function App() {
           <Route path="/projects/vchat" element={
             <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-void text-neon-cyan font-mono text-sm tracking-widest">LOADING SYSTEMS...</div>}>
               <VChat />
+            </Suspense>
+          } />
+          <Route path="/projects/routeguard" element={
+            <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-void text-neon-cyan font-mono text-sm tracking-widest">LOADING SYSTEMS...</div>}>
+              <RouteGuard />
             </Suspense>
           } />
         </Routes>

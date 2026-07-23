@@ -295,6 +295,7 @@ const desktopCoreLinks = [
   { label: 'Skills', href: '#skills' },
   { label: 'Academics', href: '#academics' },
   { label: 'VChat', href: '#vchat' },
+  { label: 'RouteGuard', href: '#routeguard' },
   { label: 'Feedback / Query', href: '#contact' },
 ]
 
