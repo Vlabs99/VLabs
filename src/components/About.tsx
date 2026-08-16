@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import {
   Zap,
@@ -31,7 +32,7 @@ const systemStats = [
   },
 ]
 
-export function About() {
+export const About = memo(function About() {
   const ref = useScrollReveal<HTMLElement>()
 
   return (
@@ -99,7 +100,7 @@ export function About() {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
+              className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:backdrop-blur-2xl"
             >
               {/* Ambient glow */}
               <motion.div
@@ -120,6 +121,7 @@ export function About() {
                     src="/VLabs/images/developer-photo.webp"
                     alt="Developer portrait"
                     loading="lazy"
+                    decoding="async"
                     className="mx-auto max-h-[760px] w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
                   />
                 </div>
@@ -133,7 +135,7 @@ export function About() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-10"
+                className="relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:backdrop-blur-2xl sm:p-10"
               >
                 {/* Glow */}
                 <motion.div
@@ -186,7 +188,7 @@ export function About() {
                         y: -4,
                         scale: 1.02,
                       }}
-                      className="relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+                      className="relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:backdrop-blur-xl"
                     >
                       {/* Glow */}
                       <motion.div
@@ -235,7 +237,7 @@ export function About() {
                     y: -4,
                     scale: 1.02,
                   }}
-                  className="relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+                  className="relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-6 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:backdrop-blur-xl"
                 >
                   {/* Glow */}
                   <motion.div
@@ -279,7 +281,7 @@ export function About() {
                   y: -4,
                   scale: 1.01,
                 }}
-                className="group relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-7 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl"
+                className="group relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-7 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:backdrop-blur-2xl"
               >
                 {/* Glow */}
                 <motion.div
@@ -316,4 +318,4 @@ export function About() {
       </div>
     </section>
   )
-}
+})

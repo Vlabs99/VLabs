@@ -41,7 +41,7 @@
 
 @layer components {
   .glass-panel {
-    @apply rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl;
+    @apply rounded-2xl border border-white/[0.08] bg-white/[0.03] backdrop-blur-sm sm:backdrop-blur-xl;
   }
 
   .glass-card {
@@ -206,6 +206,12 @@
     url("https://grainy-gradients.vercel.app/noise.svg");
 
   mix-blend-mode: soft-light;
+}
+
+@media (max-width: 767px) {
+  .noise-overlay {
+    display: none;
+  }
 }
 
 .floating-orb {

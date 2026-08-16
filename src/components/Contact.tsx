@@ -12,6 +12,7 @@ import {
 
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { developer } from '../data/content'
+import { assetUrl } from '../lib/assets'
 import { SectionHeader } from './SectionHeader'
 import { SocialButtons } from './ui/SocialButtons'
 import { ProfileAvatar } from './ui/ProfileAvatar'
@@ -180,9 +181,10 @@ alert(JSON.stringify(data))
   </motion.a>
 
   <motion.a
-    href="/VLabs/resume/Vishwarajsinh-Chudasama-Resume.pdf"
+    href={assetUrl('resume/Vishwarajsinh-Chudasama-Resume.pdf')}
     target="_blank"
     rel="noopener noreferrer"
+    download="Vishwarajsinh_Chudasama_Resume.pdf"
     className="btn-secondary flex w-full text-sm"
     whileHover={{ scale: 1.02 }}
     whileTap={{ scale: 0.98 }}

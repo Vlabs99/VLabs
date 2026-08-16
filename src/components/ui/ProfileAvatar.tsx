@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import { developer } from '../../data/content'
 
@@ -31,7 +32,7 @@ interface ProfileAvatarProps {
   className?: string
 }
 
-export function ProfileAvatar({ size = 'lg', className = '' }: ProfileAvatarProps) {
+export const ProfileAvatar = memo(function ProfileAvatar({ size = 'lg', className = '' }: ProfileAvatarProps) {
   const dims = sizeMap[size]
 
   return (
@@ -107,5 +108,5 @@ export function ProfileAvatar({ size = 'lg', className = '' }: ProfileAvatarProp
       </motion.div>
     </motion.div>
   )
-}
+})
 

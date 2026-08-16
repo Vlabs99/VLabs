@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import {
   Github,
@@ -54,7 +55,7 @@ interface SocialButtonsProps {
   className?: string
 }
 
-export function SocialButtons({ variant = 'card', className = '' }: SocialButtonsProps) {
+export const SocialButtons = memo(function SocialButtons({ variant = 'card', className = '' }: SocialButtonsProps) {
   if (variant === 'icon') {
     return (
       <div className={`flex items-center gap-2 ${className}`}>
@@ -134,4 +135,4 @@ export function SocialButtons({ variant = 'card', className = '' }: SocialButton
       })}
     </div>
   )
-}
+})

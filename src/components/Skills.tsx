@@ -1,9 +1,10 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import { useScrollReveal } from '../hooks/useScrollReveal'
 import { developer, skills } from '../data/content'
 import { SectionHeader } from './SectionHeader'
 
-export function Skills() {
+export const Skills = memo(function Skills() {
   const ref = useScrollReveal<HTMLElement>()
   const categories = [...new Set(skills.map((s) => s.category))]
 
@@ -66,4 +67,4 @@ export function Skills() {
       </div>
     </section>
   )
-}
+})

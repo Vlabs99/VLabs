@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   BookOpen,
@@ -15,7 +15,7 @@ import { useScrollReveal } from '../hooks/useScrollReveal'
 import { academicsData } from '../data/content'
 import { SectionHeader } from './SectionHeader'
 
-export function Academics() {
+export const Academics = memo(function Academics() {
   const ref = useScrollReveal<HTMLElement>()
   const [activeDegree, setActiveDegree] = useState<string>(academicsData[0].id)
   const [expandedSemester, setExpandedSemester] = useState<string | null>(null)
@@ -101,7 +101,7 @@ export function Academics() {
               className="space-y-12"
             >
               {/* Education Details Card */}
-              <div className="glow-border relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
+              <div className="glow-border relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-8 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:backdrop-blur-2xl">
                 <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-neon-cyan to-neon-violet" />
                 <div className="flex flex-col md:flex-row gap-8 justify-between items-start md:items-center">
                   <div className="space-y-4">
@@ -156,7 +156,7 @@ export function Academics() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
-                        className={`relative overflow-hidden rounded-2xl border backdrop-blur-xl transition-all duration-300 ${
+                        className={`relative overflow-hidden rounded-2xl border backdrop-blur-sm sm:backdrop-blur-xl transition-all duration-300 ${
                           isExpanded 
                             ? 'border-neon-cyan/30 bg-white/[0.04] shadow-[0_0_30px_rgba(0,240,255,0.1)]' 
                             : 'border-white/[0.05] bg-white/[0.02] shadow-[0_15px_60px_rgba(0,0,0,0.35)] hover:-translate-y-1 hover:border-white/10 hover:bg-white/[0.04]'
@@ -246,4 +246,4 @@ export function Academics() {
       </div>
     </section>
   )
-}
+})

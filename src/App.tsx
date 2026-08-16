@@ -1,25 +1,53 @@
 import { useEffect, useState, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
-import { About } from './components/About'
-import { Skills } from './components/Skills'
-import { Academics } from './components/Academics'
-import { FeaturedProject } from './components/FeaturedProject'
-import { Contact } from './components/Contact'
-import { Footer } from './components/Footer'
-import { SystemsTerminal } from './components/SystemsTerminal'
-import { AmbientParticles } from './components/AmbientParticles'
-import { CustomCursor } from './components/CustomCursor'
-import { GitHubStats } from './components/GitHubStats'
+import { LatestUpdate } from './components/LatestUpdate'
+import { useIsMobile } from './hooks/useIsMobile'
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation()
+
+  useEffect(() => {
+    if (hash) {
+      const timer = setTimeout(() => {
+        const element = document.querySelector(hash)
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' })
+        } else {
+          window.scrollTo(0, 0)
+        }
+      }, 50)
+      return () => clearTimeout(timer)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname, hash])
+
+  return null
+}
+
+// Below-the-fold homepage sections lazy loaded for mobile TTI & bundle optimization
+const SystemsTerminal = lazy(() => import('./components/SystemsTerminal').then(m => ({ default: m.SystemsTerminal })))
+const About = lazy(() => import('./components/About').then(m => ({ default: m.About })))
+const Skills = lazy(() => import('./components/Skills').then(m => ({ default: m.Skills })))
+const Academics = lazy(() => import('./components/Academics').then(m => ({ default: m.Academics })))
+const GitHubStats = lazy(() => import('./components/GitHubStats').then(m => ({ default: m.GitHubStats })))
+const Projects = lazy(() => import('./components/Projects').then(m => ({ default: m.Projects })))
+const Contact = lazy(() => import('./components/Contact').then(m => ({ default: m.Contact })))
+const Footer = lazy(() => import('./components/Footer').then(m => ({ default: m.Footer })))
+const AmbientParticles = lazy(() => import('./components/AmbientParticles').then(m => ({ default: m.AmbientParticles })))
+const CustomCursor = lazy(() => import('./components/CustomCursor').then(m => ({ default: m.CustomCursor })))
 
 const VChat = lazy(() => import('./pages/projects/VChat'))
 const RouteGuard = lazy(() => import('./pages/projects/RouteGuard'))
-import { LatestUpdate } from './components/LatestUpdate'
+const RouteGuardPrivacy = lazy(() => import('./pages/projects/RouteGuardPrivacy'))
+const VChatWeb = lazy(() => import('./pages/projects/VChatWeb'))
 
 function App() {
+  const isMobile = useIsMobile()
   const [loading, setLoading] = useState(true)
   const [progress] = useState(100)
 
@@ -30,6 +58,7 @@ function App() {
 
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <ScrollToTop />
       {/* Loading Screen */}
       <AnimatePresence>
         {loading && (
@@ -41,7 +70,7 @@ function App() {
               scale: 1.02,
             }}
             transition={{
-              duration: 0.8,
+              duration: isMobile ? 0.15 : 0.6,
               ease: 'easeInOut',
             }}
           >
@@ -192,8 +221,10 @@ function App() {
 
       {/* Main Website */}
       <div className="relative min-h-screen bg-void">
-        <AmbientParticles />
-        <CustomCursor />
+        <Suspense fallback={null}>
+          <AmbientParticles />
+          <CustomCursor />
+        </Suspense>
         <Navbar />
 
         <Routes>
@@ -201,13 +232,15 @@ function App() {
             <main className="relative">
               <LatestUpdate />
               <Hero />
-              <SystemsTerminal />
-              <About />
-              <Skills />
-              <Academics />
-              <GitHubStats />
-              <FeaturedProject />
-              <Contact />
+              <Suspense fallback={<div className="py-20 text-center font-mono text-xs text-white/30">LOADING SYSTEMS...</div>}>
+                <SystemsTerminal />
+                <About />
+                <Skills />
+                <Academics />
+                <GitHubStats />
+                <Projects />
+                <Contact />
+              </Suspense>
             </main>
           } />
           <Route path="/projects/vchat" element={
@@ -220,10 +253,32 @@ function App() {
               <RouteGuard />
             </Suspense>
           } />
+          <Route path="/projects/routeguard/privacy" element={
+            <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-void text-neon-cyan font-mono text-sm tracking-widest">LOADING SYSTEMS...</div>}>
+              <RouteGuardPrivacy />
+            </Suspense>
+          } />
+          <Route path="/routeguard/privacy" element={
+            <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-void text-neon-cyan font-mono text-sm tracking-widest">LOADING SYSTEMS...</div>}>
+              <RouteGuardPrivacy />
+            </Suspense>
+          } />
+          <Route path="/privacy" element={
+            <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-void text-neon-cyan font-mono text-sm tracking-widest">LOADING SYSTEMS...</div>}>
+              <RouteGuardPrivacy />
+            </Suspense>
+          } />
+          <Route path="/projects/vchat-web" element={
+            <Suspense fallback={<div className="flex min-h-screen items-center justify-center bg-void text-neon-cyan font-mono text-sm tracking-widest">LOADING SYSTEMS...</div>}>
+              <VChatWeb />
+            </Suspense>
+          } />
         </Routes>
 
         <div className="noise-overlay" />
-        <Footer />
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
       </div>
     </BrowserRouter>
   )

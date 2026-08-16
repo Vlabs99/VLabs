@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 interface SectionHeaderProps {
   label: string
   title: string
@@ -5,7 +7,7 @@ interface SectionHeaderProps {
   align?: 'left' | 'center'
 }
 
-export function SectionHeader({
+export const SectionHeader = memo(function SectionHeader({
   label,
   title,
   subtitle,
@@ -36,4 +38,4 @@ export function SectionHeader({
       )}
     </div>
   )
-}
+})

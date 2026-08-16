@@ -1,6 +1,6 @@
+import { memo, useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Cpu, ShieldCheck, Activity } from 'lucide-react'
-import { useEffect, useState } from 'react'
 
 import { SectionHeader } from './SectionHeader'
 import { useScrollReveal } from '../hooks/useScrollReveal'
@@ -15,7 +15,7 @@ const terminalLines = [
   '[Status] All systems operational',
 ]
 
-export function SystemsTerminal() {
+export const SystemsTerminal = memo(function SystemsTerminal() {
   const ref = useScrollReveal<HTMLElement>()
 
   const [visibleLines, setVisibleLines] = useState<string[]>([])
@@ -88,7 +88,7 @@ export function SystemsTerminal() {
         />
 
         {/* Terminal */}
-        <div className="terminal-grid animate-in-view relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl">
+        <div className="terminal-grid animate-in-view relative overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-sm sm:backdrop-blur-2xl">
           {/* Scanline */}
           <div className="pointer-events-none absolute inset-0 opacity-[0.04]">
             <div
@@ -193,7 +193,7 @@ export function SystemsTerminal() {
       whileHover={{
         y: -4,
       }}
-      className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300"
+      className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:backdrop-blur-xl transition-all duration-300"
     >
       <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/35">
         {item.label}
@@ -222,7 +222,7 @@ export function SystemsTerminal() {
 
             {/* Bottom cards */}
             <div className="mt-10 grid gap-4 md:grid-cols-3">
-              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300">
+              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:backdrop-blur-xl transition-all duration-300">
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-neon-cyan/10">
                   <Cpu className="h-5 w-5 text-neon-cyan" />
                 </div>
@@ -237,7 +237,7 @@ export function SystemsTerminal() {
                 </p>
               </motion.div>
 
-              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300">
+              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:backdrop-blur-xl transition-all duration-300">
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-neon-violet/10">
                   <Activity className="h-5 w-5 text-neon-violet" />
                 </div>
@@ -252,7 +252,7 @@ export function SystemsTerminal() {
                 </p>
               </motion.div>
 
-              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300">
+              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-white/[0.05] bg-white/[0.02] p-5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:backdrop-blur-xl transition-all duration-300">
                 <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-neon-magenta/10">
                   <ShieldCheck className="h-5 w-5 text-neon-magenta" />
                 </div>
@@ -272,4 +272,4 @@ export function SystemsTerminal() {
       </div>
     </section>
   )
-}
+})

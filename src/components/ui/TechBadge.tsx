@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 
 interface TechBadgeProps {
@@ -6,7 +7,7 @@ interface TechBadgeProps {
   delay?: number
 }
 
-export function TechBadge({ label, variant = 'default', delay = 0 }: TechBadgeProps) {
+export const TechBadge = memo(function TechBadge({ label, variant = 'default', delay = 0 }: TechBadgeProps) {
   const styles = {
     default: 'border-white/10 bg-white/[0.04] text-white/70',
     accent: 'border-neon-cyan/25 bg-neon-cyan/10 text-neon-cyan',
@@ -24,4 +25,4 @@ export function TechBadge({ label, variant = 'default', delay = 0 }: TechBadgePr
       {label}
     </motion.span>
   )
-}
+})

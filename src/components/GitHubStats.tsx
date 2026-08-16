@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { motion } from 'framer-motion'
 import { Github, GitBranch, Star, Activity } from 'lucide-react'
 
@@ -24,7 +25,7 @@ const stats = [
   },
 ]
 
-export function GitHubStats() {
+export const GitHubStats = memo(function GitHubStats() {
   return (
     <section className="section-divider section-padding relative overflow-hidden">
       <div className="absolute inset-0 mesh-bg opacity-20" />
@@ -63,7 +64,7 @@ export function GitHubStats() {
                 whileHover={{
                   y: -4,
                 }}
-                className="hover-light group relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-7 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl"
+                className="hover-light group relative overflow-hidden rounded-2xl border border-white/[0.05] bg-white/[0.02] p-7 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-sm sm:backdrop-blur-xl"
               >
                 {/* Glow */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,240,255,0.12),transparent_60%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
@@ -88,4 +89,4 @@ export function GitHubStats() {
       </div>
     </section>
   )
-}
+})

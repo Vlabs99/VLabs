@@ -1,7 +1,9 @@
+import { memo, useEffect } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
-import { useEffect } from 'react'
+import { useIsMobile } from '../hooks/useIsMobile'
 
-export function CustomCursor() {
+export const CustomCursor = memo(function CustomCursor() {
+  const isMobile = useIsMobile()
   const mouseX = useMotionValue(-100)
   const mouseY = useMotionValue(-100)
 
@@ -16,17 +18,21 @@ export function CustomCursor() {
   })
 
   useEffect(() => {
+    if (isMobile) return
+
     const moveCursor = (e: MouseEvent) => {
       mouseX.set(e.clientX - 10)
       mouseY.set(e.clientY - 10)
     }
 
-    window.addEventListener('mousemove', moveCursor)
+    window.addEventListener('mousemove', moveCursor, { passive: true })
 
     return () => {
       window.removeEventListener('mousemove', moveCursor)
     }
-  }, [mouseX, mouseY])
+  }, [isMobile, mouseX, mouseY])
+
+  if (isMobile) return null
 
   return (
     <>
@@ -49,4 +55,4 @@ export function CustomCursor() {
       />
     </>
   )
-}
+})

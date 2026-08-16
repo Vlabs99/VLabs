@@ -8,6 +8,7 @@ const GITHUB_URL = "https://github.com/Vlabs99/VChat-Web";
 const APK_URL = "https://github.com/Vlabs99/Vchat/releases/download/v1.0/app-debug.apk";
 
 const screenshots = [
+  { title: "VChat Showcase Profile", image: `${import.meta.env.BASE_URL}screenshots/vchat profile image.png` },
   { title: "Splash Screen", image: `${import.meta.env.BASE_URL}screenshots/vchat-splash.webp` },
   { title: "Chat Sessions", image: `${import.meta.env.BASE_URL}screenshots/vchat-chat-list.webp` },
   { title: "Private Chat", image: `${import.meta.env.BASE_URL}screenshots/vchat-private-chat.webp` },
@@ -135,6 +136,23 @@ export default function VChat() {
                 <Download className="w-5 h-5 shrink-0" />
                 <span>Download APK</span>
               </a>
+            </motion.div>
+
+            {/* Main Showcase Image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="relative aspect-[16/9] w-full max-w-4xl mx-auto overflow-hidden rounded-3xl border border-white/10 bg-void/60 shadow-[0_20px_80px_rgba(0,0,0,0.6)] mt-12"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}screenshots/vchat profile image.png`}
+                alt="VChat Messenger Showcase"
+                className="h-full w-full object-cover object-top"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-void via-transparent to-transparent opacity-60" />
             </motion.div>
           </section>
 

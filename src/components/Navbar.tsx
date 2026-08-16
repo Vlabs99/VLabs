@@ -179,7 +179,7 @@
 //               <ArrowUpRight className="h-3.5 w-3.5" />
 //             </a>
 
-            
+
 //           </div>
 
 //           <button
@@ -266,6 +266,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation, useNavigate } from 'react-router-dom'
 import {
   Menu,
   X,
@@ -280,6 +281,7 @@ import {
 } from 'lucide-react'
 
 import { SocialButtons } from './ui/SocialButtons'
+import { assetUrl } from '../lib/assets'
 
 interface DropdownItem {
   label: string
@@ -294,12 +296,15 @@ const desktopCoreLinks = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Academics', href: '#academics' },
-  { label: 'VChat', href: '#vchat' },
-  { label: 'RouteGuard', href: '#routeguard' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Feedback / Query', href: '#contact' },
 ]
 
 export function Navbar() {
+  const location = useLocation()
+  const navigate = useNavigate()
+  const isHomePage = location.pathname === '/' || location.pathname === '' || location.pathname === '/VLabs/' || location.pathname === '/VLabs'
+
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('#hero')
@@ -308,10 +313,19 @@ export function Navbar() {
   const [mobileDownloadsOpen, setMobileDownloadsOpen] = useState(false)
   const [mobileContactOpen, setMobileContactOpen] = useState(false)
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setOpen(false)
+    setOpenDropdown(null)
+    if (!isHomePage) {
+      e.preventDefault()
+      navigate('/' + href)
+    }
+  }
+
   const downloadsItems: DropdownItem[] = [
     {
       label: 'Resume Download',
-      href: '/VLabs/resume/Vishwarajsinh-Chudasama-Resume.pdf',
+      href: assetUrl('resume/Vishwarajsinh-Chudasama-Resume.pdf'),
       desc: 'Vishwarajsinh Chudasama Resume (PDF)',
       icon: FileText,
       isExternal: true,
@@ -321,8 +335,8 @@ export function Navbar() {
   const contactDropdownItems: DropdownItem[] = [
     {
       label: 'Email',
-      href: 'mailto:raavishvarajsinh9@gmail.com',
-      desc: 'raavishvarajsinh9@gmail.com',
+      href: 'mailto:vlabs.digital@gmail.com',
+      desc: 'vlabs.digital@gmail.com',
       icon: Mail,
       isExternal: false,
     },
@@ -336,7 +350,7 @@ export function Navbar() {
     {
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/vishwarajsinh-chudasama',
-      desc: 'vishvarajsinh-chudasama',
+      desc: 'vishwarajsinh-chudasama',
       icon: Linkedin,
       isExternal: true,
     },
@@ -419,8 +433,8 @@ export function Navbar() {
           scaleX:
             typeof window !== 'undefined'
               ? window.scrollY /
-                (document.body.scrollHeight -
-                  window.innerHeight || 1)
+              (document.body.scrollHeight -
+                window.innerHeight || 1)
               : 0,
           width: '100%',
         }}
@@ -436,15 +450,15 @@ export function Navbar() {
           duration: 0.35,
           ease: [0.16, 1, 0.3, 1],
         }}
-        className={`fixed inset-x-0 top-0 z-[9999] transition-all duration-500 ${
-          scrolled
-            ? 'border-b border-white/[0.07] bg-void/90 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.5)]'
-            : 'bg-[#050816]'
-        }`}
+        className={`fixed inset-x-0 top-0 z-[9999] transition-all duration-500 ${scrolled
+          ? 'border-b border-white/[0.07] bg-void/90 backdrop-blur-2xl shadow-[0_12px_40px_rgba(0,0,0,0.5)]'
+          : 'bg-[#050816]'
+          }`}
       >
         <nav className="relative mx-auto mt-3 flex max-w-6xl items-center justify-between gap-4 rounded-2xl border border-white/[0.05] bg-white/[0.02] px-4 py-3.5 shadow-[0_15px_60px_rgba(0,0,0,0.35)] backdrop-blur-xl before:pointer-events-none before:absolute before:inset-0 before:rounded-2xl before:bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent)] before:opacity-80 sm:px-6 lg:px-8">
           <a
             href="#hero"
+            onClick={(e) => handleNavClick(e, '#hero')}
             className="group flex shrink-0 items-center gap-3"
           >
             <motion.div
@@ -505,11 +519,11 @@ export function Navbar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`nav-link rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${
-                    activeSection === link.href
-                      ? 'bg-white/5 text-neon-cyan shadow-[0_0_20px_rgba(0,240,255,0.18)]'
-                      : ''
-                  }`}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`nav-link rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${isHomePage && activeSection === link.href
+                    ? 'bg-white/5 text-neon-cyan shadow-[0_0_20px_rgba(0,240,255,0.18)]'
+                    : ''
+                    }`}
                 >
                   {link.label}
                 </a>
@@ -524,9 +538,8 @@ export function Navbar() {
             >
               <button
                 type="button"
-                className={`nav-link flex items-center gap-1 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${
-                  openDropdown === 'downloads' ? 'bg-white/5 text-neon-cyan' : ''
-                }`}
+                className={`nav-link flex items-center gap-1 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${openDropdown === 'downloads' ? 'bg-white/5 text-neon-cyan' : ''
+                  }`}
               >
                 Downloads
                 <motion.div
@@ -584,9 +597,8 @@ export function Navbar() {
             >
               <button
                 type="button"
-                className={`nav-link flex items-center gap-1 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${
-                  openDropdown === 'contact' ? 'bg-white/5 text-neon-cyan' : ''
-                }`}
+                className={`nav-link flex items-center gap-1 rounded-xl px-4 py-2 transition-all duration-300 hover:bg-white/5 hover:text-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.12)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void ${openDropdown === 'contact' ? 'bg-white/5 text-neon-cyan' : ''
+                  }`}
               >
                 Contact
                 <motion.div
@@ -682,12 +694,11 @@ export function Navbar() {
                     >
                       <a
                         href={link.href}
-                        onClick={() => setOpen(false)}
-                        className={`block rounded-xl px-4 py-4 font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black ${
-                          activeSection === link.href
-                            ? 'bg-black text-neon-cyan border border-neon-cyan/20'
-                            : 'bg-black text-white/75 hover:text-neon-cyan'
-                        }`}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                        className={`block rounded-xl px-4 py-4 font-medium transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-black ${isHomePage && activeSection === link.href
+                          ? 'bg-black text-neon-cyan border border-neon-cyan/20'
+                          : 'bg-black text-white/75 hover:text-neon-cyan'
+                          }`}
                       >
                         {link.label}
                       </a>

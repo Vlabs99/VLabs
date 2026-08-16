@@ -1,5 +1,5 @@
+import { memo, useEffect, useState, lazy, Suspense } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
-import { useEffect, useState, lazy, Suspense } from 'react'
 import { ArrowDown, Code2 } from 'lucide-react'
 import { developer } from '../data/content'
 import { SocialButtons } from './ui/SocialButtons'
@@ -10,7 +10,7 @@ const AIParticles = lazy(() => import('./ui/AIParticles').then((m) => ({ default
 import { MagneticButton } from './ui/MagneticButton'
 import { useIsMobile } from '../hooks/useIsMobile'
 
-export function Hero() {
+export const Hero = memo(function Hero() {
   const isMobile = useIsMobile()
   const roles = [
   'AI Systems Engineer',
@@ -38,13 +38,6 @@ const smoothMouseY = useSpring(mouseY, {
   useEffect(() => {
     if (!isMobile) {
       setIsSceneReady(true)
-    } else {
-      const idleCallback = window.requestIdleCallback || ((cb) => setTimeout(cb, 1500))
-      const id = idleCallback(() => setIsSceneReady(true))
-      return () => {
-        if (window.cancelIdleCallback) window.cancelIdleCallback(id)
-        else clearTimeout(id as any)
-      }
     }
   }, [isMobile])
 
@@ -57,9 +50,10 @@ const smoothMouseY = useSpring(mouseY, {
   }, [])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-  mouseX.set(e.clientX)
-  mouseY.set(e.clientY)
-}
+    if (isMobile) return
+    mouseX.set(e.clientX)
+    mouseY.set(e.clientY)
+  }
 
   return (
   <section
@@ -67,7 +61,7 @@ const smoothMouseY = useSpring(mouseY, {
   
     id="hero"
     onMouseMove={handleMouseMove}
-    className="relative z-0 flex min-h-screen items-center overflow-hidden pt-24 pb-16"
+    className="relative z-0 flex min-h-screen items-center overflow-hidden pt-4 sm:pt-6 lg:pt-24 pb-16"
   >
     {!isMobile && (
       <Suspense fallback={null}>
@@ -221,7 +215,7 @@ const smoothMouseY = useSpring(mouseY, {
 
     {/* 3D Scene */}
     <div className="relative z-0">
-      {isSceneReady && (
+      {!isMobile && isSceneReady && (
         <Suspense fallback={null}>
           <Scene3D />
         </Suspense>
@@ -238,7 +232,7 @@ const smoothMouseY = useSpring(mouseY, {
           <div className="relative flex flex-col justify-center overflow-hidden rounded-[32px] border border-white/[0.08] bg-white/[0.03] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:p-8 lg:p-10 lg:pr-8">
   {/* Animated gradient border glow */}
   <motion.div
-    animate={{
+    animate={isMobile ? {} : {
       opacity: [0.35, 0.7, 0.35],
     }}
     transition={{
@@ -275,7 +269,7 @@ const smoothMouseY = useSpring(mouseY, {
   <div className="relative flex items-center gap-2 rounded-full border border-neon-cyan/20 bg-neon-cyan/10 px-3 py-1 backdrop-blur-md">
   {/* Animated pulse */}
   <motion.span
-    animate={{
+    animate={isMobile ? {} : {
       scale: [1, 1.8, 1],
       opacity: [0.7, 0, 0.7],
     }}
@@ -303,7 +297,7 @@ const smoothMouseY = useSpring(mouseY, {
   className="relative text-4xl font-black leading-[0.95] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl before:absolute before:-left-10 before:top-1/2 before:h-40 before:w-40 before:-translate-y-1/2 before:rounded-full before:bg-neon-cyan/10 before:blur-3xl before:content-['']"
 >
   <span className="block text-white drop-shadow-[0_0_25px_rgba(255,255,255,0.08)]">
-    VLabs
+    Software Engineering
   </span>
 
   <motion.span
@@ -317,7 +311,7 @@ const smoothMouseY = useSpring(mouseY, {
     }}
     className="mt-2 block bg-[linear-gradient(90deg,#00F0FF,#8B5CF6,#00F0FF)] bg-[length:200%_200%] bg-clip-text text-transparent"
   >
-    Intelligent Engineering
+    Beyond a Single Technology
   </motion.span>
 
   {/* Animated underline */}
@@ -350,11 +344,7 @@ const smoothMouseY = useSpring(mouseY, {
   transition={{ delay: 0.45, duration: 0.5 }}
   className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
 >
-  VLabs is an independent engineering portfolio focused on AI-assisted applications, Android development, modern web platforms, Windows software, and scalable realtime systems.
-
-  <span className="mt-4 block text-white/50">
-    From intelligent automation tools and interactive digital experiences to production-style messaging infrastructure and cross-platform applications, every project is designed with modern architecture, performance, and creative engineering in mind.
-  </span>
+  From mobile applications to web platforms and intelligent systems, I build scalable software solutions focused on performance, usability, and real-world impact.
 </motion.p>
 
             {/* CTA Buttons */}
@@ -366,7 +356,7 @@ const smoothMouseY = useSpring(mouseY, {
 >
   {/* Ambient CTA glow */}
   <motion.div
-    animate={{
+    animate={isMobile ? {} : {
       opacity: [0.25, 0.5, 0.25],
       scale: [1, 1.08, 1],
     }}
@@ -379,7 +369,7 @@ const smoothMouseY = useSpring(mouseY, {
   />
 
   <MagneticButton
-  href="#vchat"
+  href="#projects"
   className="relative z-10 btn-primary inline-flex items-center justify-center shadow-[0_0_30px_rgba(0,240,255,0.18)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_45px_rgba(0,240,255,0.28)] focus:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-void"
 >
   <Code2 className="h-5 w-5" />
@@ -451,7 +441,7 @@ const smoothMouseY = useSpring(mouseY, {
 >
   {/* Mobile glow */}
   <motion.div
-    animate={{
+    animate={isMobile ? {} : {
       scale: [1, 1.05, 1],
       opacity: [0.35, 0.55, 0.35],
     }}
@@ -465,7 +455,7 @@ const smoothMouseY = useSpring(mouseY, {
 
   {/* Mobile-only Premium Neon Ring */}
   <motion.div
-    animate={{ rotate: 360 }}
+    animate={isMobile ? {} : { rotate: 360 }}
     transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
     className="absolute top-1/2 left-1/2 z-10 h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[conic-gradient(from_0deg,rgba(0,240,255,0.4),rgba(139,92,246,0.2),rgba(217,70,239,0.1),rgba(0,240,255,0.4))] p-[1px] opacity-60"
   >
@@ -473,7 +463,7 @@ const smoothMouseY = useSpring(mouseY, {
   </motion.div>
 
   <motion.div
-    animate={{
+    animate={isMobile ? {} : {
       y: [0, -6, 0],
     }}
     transition={{
@@ -516,4 +506,4 @@ const smoothMouseY = useSpring(mouseY, {
 
 </section>
 )
-}
+})
